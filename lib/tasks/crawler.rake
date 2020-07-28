@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'open-uri'
-require 'logger'
 require 'src/interface_web'
 
 # rake task

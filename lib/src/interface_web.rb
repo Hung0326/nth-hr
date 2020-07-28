@@ -3,15 +3,19 @@
 require 'open-uri'
 
 # Crawler data
-class InterfaceWeb  
-  def self.crawl_link_for_companies_jobs(page)
+class InterfaceWeb
+  INTERNATION = 0
+  VIETNAM = 1
+  RANGE = 69
+
+  def self.crawl_link(page)
     puts "Crawling link on page...\nPLease wait...\n"
     data = []
     website_companies = []
     website_jobs = []
 
     file = File.readlines('tmp/link.txt', 'r') if File.exist?('tmp/link.txt')
-    @@stop_crawl = file.blank? ? '' : file.join    
+    @@stop_crawl = file.blank? ? '' : file.join
     page.times do |i|
       page = Nokogiri::HTML(URI.open("https://careerbuilder.vn/viec-lam/tat-ca-viec-lam-trang-#{i + 1}-vi.html"))
       link_companies = page.search('.figcaption .caption @href')
@@ -22,15 +26,15 @@ class InterfaceWeb
     end
     website_companies = website_companies.select { |val| val.present? && val != 'javascript:void(0);' }
     website_jobs = website_jobs.select(&:present?)
-    puts "Result:\nCompany: #{website_companies.length} link\nJob    : #{website_jobs.length} link\n------------------------"
+    puts "Result:\nCompany: #{website_companies.length} link\nJob    : #{website_jobs.length} link\n--------------"
     File.write('tmp/link.txt', website_jobs[0])
     data << website_companies << website_jobs
   end
- 
-  def self.get_link_job_and_companies
-    @crawl_link_for_companies_jobs ||= crawl_link_for_companies_jobs(2)
+
+  def self.link_job_and_companies
+    @link_job_and_companies ||= crawl_link(3)
   end
-  
+
   def self.safe_link(url)
     Nokogiri::HTML(URI.parse(URI.escape(url)))
   end
@@ -46,7 +50,7 @@ class InterfaceWeb
     end
     puts 'Save data to database...'
     data_list_cities.each_with_index do |val, index|
-      area = index > 69 ? 0 : 1
+      area = index > RANGE ? INTERNATION : VIETNAM
       City.find_or_create_by(name: val) do |city|
         city.name = val
         city.area = area
@@ -56,18 +60,19 @@ class InterfaceWeb
 
   def self.craw_data_companies
     puts 'Crawl data companies'
-    link_crawl = get_link_job_and_companies
+    link_crawl = link_job_and_companies
     link_crawl[0].each do |url|
       page = Nokogiri::HTML(URI.open(URI.parse(URI.escape(url))))
       name = ''
       address = ''
       desc = ''
-      if page.search('.company-info .info .content .name').text == ''
-        name = page.search('.section-page #cp_company_name').text
+      company_name = page.search('.company-info .info .content .name').text
+      if company_name.blank?
+        name = page.search('.section-page #cp_company_name').text.strip
         address = page.search('.section-page .cp_basic_info_details ul li:nth-child(1)').text
         desc = page.search('.cp_aboutus_item .content_fck').text
       else
-        name = page.search('.company-info .info .content .name').text
+        name = company_name.strip
         address = page.search('.company-info .info .content p:nth-child(3)').text
         desc = page.search('.main-about-us .content').text
       end
@@ -85,7 +90,7 @@ class InterfaceWeb
       end
     end
   end
-  
+
   def self.add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
     begin
       id_company = Company.find_by name: company_name
@@ -139,34 +144,22 @@ class InterfaceWeb
   def self.crawl_data_jobs_interface_2(page)
     name = page.search('.apply-now-content .job-desc .title').text
     company_name = page.search('.top-job .top-job-info .tit_company').text
-    location = []
+    locations = []
     length = page.search('.info-workplace .value a').size
     length.times do |n|
-      location << page.search(".info-workplace .value a:nth-child(#{n + 1})").text
+      locations << page.search(".info-workplace .value a:nth-child(#{n + 1})").text
     end
-    city_name = location.join(',')
+    city_name = locations.join(',')
     created_date = ''
     expiration_date = page.search('.info li:nth-child(4)').text
-    expiration_date = if expiration_date.blank?
-                        ''
-                      else
-                        expiration_date.to_s.delete!("[\n,\t,\r]").split(' ').last
-                      end
+    expiration_date = expiration_date.blank? ? '' : expiration_date.delete!("[\n,\t,\r]").split(' ').last
     salary = page.search('.info li:nth-child(3)').text.split('Lương').last.strip
     industry_name = page.search('.info li:nth-child(5) .value').text
     description = page.search('.left-col').to_s
     lv = page.search('.boxtp .info li:nth-child(2)').text
-    level = if lv.blank?
-              ''
-            else
-              lv.delete!("[\n,\t,\r]").strip.split('Cấp bậc').last.strip
-            end
+    level = lv.blank? ? '' : lv.delete!("[\n,\t,\r]").strip.split('Cấp bậc').last.strip
     exp = page.search('.info li:nth-child(6)').text
-    exprience = if exp.blank?
-                  ''
-                else
-                  exp.delete!("[\n,\t,\r]").split('Kinh nghiệm').last.strip
-                end
+    exprience = exp.blank? ? '' : exp.delete!("[\n,\t,\r]").split('Kinh nghiệm').last.strip
     add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
   end
 
@@ -187,7 +180,7 @@ class InterfaceWeb
   def self.make_foreign_industries_table(data, id_job)
     content = data.split(',')
     content.each do |val|
-      val.gsub!('&amp;','&') if val.include?('&amp;')
+      val.gsub!('&amp;', '&') if val.include?('&amp;')
       id_industry = Industry.find_by name: val.strip
       id_industry = id_industry.blank? ? Industry.create!(name: val.strip).id : id_industry.id
       IndustryJob.create!(industry_id: id_industry, job_id: id_job)
@@ -205,7 +198,7 @@ class InterfaceWeb
 
   def self.make_data
     puts 'Please wait for crawl jobs data! . . .'
-    link_crawl = get_link_job_and_companies
+    link_crawl = link_job_and_companies
     arr_link = []
     link_crawl[1].each do |val|
       break if @@stop_crawl == val
@@ -215,7 +208,7 @@ class InterfaceWeb
       page = Nokogiri::HTML(URI.open(URI.parse(URI.escape(path))))
       if !page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].nil?
         crawl_data_jobs_interface_1(page)
-      elsif page.search('section .template-200').text != ''
+      elsif page.search('section .template-200').text.present?
         crawl_data_jobs_interface_2(page)
       elsif page.search('.DetailJobNew ul li').size == 10 && !page.search('.right-col ul li').text.include?('Độ tuổi')
         crawl_data_jobs_interface_5(page)
