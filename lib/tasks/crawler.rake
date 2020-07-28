@@ -10,7 +10,7 @@ namespace :crawler do
       company.address = 'Vui lòng xem trong mô tả công việc'
       company.short_description = 'Vui lòng xem trong mô tả công việc'
     end
-    cw = InterfaceWeb.new
+    cw = Crawler.new
     cw.craw_data_cities
     cw.craw_data_companies
     cw.make_data

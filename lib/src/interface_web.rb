@@ -3,7 +3,7 @@
 require 'open-uri'
 
 # Crawler data
-class InterfaceWeb
+class Crawler
   COMPANY_SECURITY = 1
   NUMBER_LINK = 1
   SIZE_LI_INTERFACE_5 = 10
@@ -90,6 +90,28 @@ class InterfaceWeb
         puts e
       end
     end
+  end
+
+  def make_data
+    puts 'Please wait for crawl jobs data! . . .'
+    link_crawl = link_job_and_companies
+    arr_link = []
+    link_crawl[1].each do |val|
+      break if @@stop_crawl == val
+      arr_link << val
+    end
+    arr_link.reverse!.each_with_index do |path, i|
+      page = Nokogiri::HTML(URI.open(URI.parse(URI.escape(path))))
+      if page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].present?
+        crawl_data_jobs_interface_1(page)
+      elsif page.search('section .template-200').text.present?
+        crawl_data_jobs_interface_2(page)
+      elsif page.search('.DetailJobNew ul li').size == SIZE_LI_INTERFACE_5 && !page.search('.right-col ul li').text.include?('Độ tuổi')
+        crawl_data_jobs_interface_5(page)
+      end
+      puts "#{i} - #{path}"
+    end
+    puts 'Crawler data jobs success!'
   end
 
   private
@@ -200,29 +222,5 @@ class InterfaceWeb
       id_cities = data_city.blank? ? City.create!(name: city.strip, area: DOMESTIC).id : data_city.id
       CityJob.create!(job_id: id_job, city_id: id_cities)
     end
-  end
-
-  public
-
-  def make_data
-    puts 'Please wait for crawl jobs data! . . .'
-    link_crawl = link_job_and_companies
-    arr_link = []
-    link_crawl[1].each do |val|
-      break if @@stop_crawl == val
-      arr_link << val
-    end
-    arr_link.reverse!.each_with_index do |path, i|
-      page = Nokogiri::HTML(URI.open(URI.parse(URI.escape(path))))
-      if page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].present?
-        crawl_data_jobs_interface_1(page)
-      elsif page.search('section .template-200').text.present?
-        crawl_data_jobs_interface_2(page)
-      elsif page.search('.DetailJobNew ul li').size == SIZE_LI_INTERFACE_5 && !page.search('.right-col ul li').text.include?('Độ tuổi')
-        crawl_data_jobs_interface_5(page)
-      end
-      puts "#{i} - #{path}"
-    end
-    puts 'Crawler data jobs success!'
   end
 end
