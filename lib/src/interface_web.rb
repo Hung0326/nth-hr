@@ -4,11 +4,13 @@ require 'open-uri'
 
 # Crawler data
 class InterfaceWeb
-  INTERNATION = 0
-  VIETNAM = 1
+  COMPANY_SECURITY = 1
+  SIZE_LI_INTERFACE_5 = 10
+  INTERNATIONAL = 0
+  DOMESTIC = 1
   RANGE = 69
 
-  def self.crawl_link(page)
+  def crawl_link(page)
     puts "Crawling link on page...\nPLease wait...\n"
     data = []
     website_companies = []
@@ -31,15 +33,16 @@ class InterfaceWeb
     data << website_companies << website_jobs
   end
 
-  def self.link_job_and_companies
-    @link_job_and_companies ||= crawl_link(3)
+  
+  def link_job_and_companies
+    @link_job_and_companies ||= crawl_link(2)
   end
 
   def self.safe_link(url)
     Nokogiri::HTML(URI.parse(URI.escape(url)))
   end
 
-  def self.craw_data_cities
+  def craw_data_cities
     page = Nokogiri::HTML(URI.open('https://careerbuilder.vn/viec-lam/tat-ca-viec-lam-vi.html'))
     puts "Crawling data location... \n. \n. \n."
     data_list_cities = []
@@ -50,7 +53,7 @@ class InterfaceWeb
     end
     puts 'Save data to database...'
     data_list_cities.each_with_index do |val, index|
-      area = index > RANGE ? INTERNATION : VIETNAM
+      area = index > RANGE ? INTERNATIONAL : DOMESTIC
       City.find_or_create_by(name: val) do |city|
         city.name = val
         city.area = area
@@ -58,7 +61,7 @@ class InterfaceWeb
     end
   end
 
-  def self.craw_data_companies
+  def craw_data_companies
     puts 'Crawl data companies'
     link_crawl = link_job_and_companies
     link_crawl[0].each do |url|
@@ -91,26 +94,28 @@ class InterfaceWeb
     end
   end
 
-  def self.add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
-    begin
-      id_company = Company.find_by name: company_name
-      id_company = id_company.present? ? id_company.id : 1
-      id_job = Job.create!(name: name,
-                           company_id: id_company,
-                           level: level,
-                           experience: exprience,
-                           salary: salary,
-                           create_date: created_date,
-                           expiration_date: expiration_date,
-                           description: description)
-      make_foreign_industries_table(industry_name, id_job.id)
-      make_foreign_cities_table(city_name, id_job.id)
+  private
+
+  def add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
+    id_company = Company.find_by name: company_name
+    id_company = id_company.present? ? id_company.id : COMPANY_SECURITY
+    id_job = Job.create!(name: name,
+                        company_id: id_company,
+                        level: level,
+                        experience: exprience,
+                        salary: salary,
+                        create_date: created_date,
+                        expiration_date: expiration_date,
+                        description: description)
+    make_foreign_industries_table(industry_name, id_job.id)
+    make_foreign_cities_table(city_name, id_job.id)
     rescue StandardError => e
-      puts e
-    end
+    puts e
   end
 
-  def self.crawl_data_jobs_interface_1(page)
+  private
+
+  def crawl_data_jobs_interface_1(page)
     name = page.search('.apply-now-content .job-desc .title').text
     company_name = page.search('.apply-now-content .job-desc .job-company-name').text
     location = []
@@ -141,7 +146,9 @@ class InterfaceWeb
     add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
   end
 
-  def self.crawl_data_jobs_interface_2(page)
+  private
+
+  def crawl_data_jobs_interface_2(page)
     name = page.search('.apply-now-content .job-desc .title').text
     company_name = page.search('.top-job .top-job-info .tit_company').text
     locations = []
@@ -163,7 +170,9 @@ class InterfaceWeb
     add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
   end
 
-  def self.crawl_data_jobs_interface_5(page)
+  private
+
+  def crawl_data_jobs_interface_5(page)
     name = page.search('.info-company h1').text
     company_name = page.search('.info-company .text-job h2').text
     city_name = page.search('.DetailJobNew ul li:nth-child(1) a').text
@@ -177,26 +186,36 @@ class InterfaceWeb
     add_data(name, company_name, city_name, created_date, expiration_date, salary, industry_name, description, level, exprience)
   end
 
-  def self.make_foreign_industries_table(data, id_job)
-    content = data.split(',')
-    content.each do |val|
-      val.gsub!('&amp;', '&') if val.include?('&amp;')
-      id_industry = Industry.find_by name: val.strip
-      id_industry = id_industry.blank? ? Industry.create!(name: val.strip).id : id_industry.id
-      IndustryJob.create!(industry_id: id_industry, job_id: id_job)
+  private
+
+  def make_foreign_industries_table(data, id_job)
+    unless data.blank? && id_job.blank?       
+      content = data.split(',')
+      content.each do |val|
+        val.gsub!('&amp;', '&') if val.include?('&amp;')
+        data_industry = Industry.find_by name: val.strip
+        id_industry = data_industry.blank? ? Industry.create!(name: val.strip).id : data_industry.id
+        IndustryJob.create!(industry_id: id_industry, job_id: id_job)
+      end
     end
   end
 
-  def self.make_foreign_cities_table(data, id_job)
-    cities = data.split(',')
-    cities.each do |city|
-      id_cities = City.find_by name: city.strip
-      id_cities = id_cities.blank? ? City.create!(name: city.strip, area: 1).id : id_cities.id
-      CityJob.create!(job_id: id_job, city_id: id_cities)
+  private
+
+  def make_foreign_cities_table(data, id_job)
+    unless data.blank? && id_job.blank?      
+      cities = data.split(',')
+      cities.each do |city|
+        data_city = City.find_by name: city.strip
+        id_cities = data_city.blank? ? City.create!(name: city.strip, area: DOMESTIC).id : data_city.id
+        CityJob.create!(job_id: id_job, city_id: id_cities)
+      end
     end
   end
 
-  def self.make_data
+  public
+
+  def make_data
     puts 'Please wait for crawl jobs data! . . .'
     link_crawl = link_job_and_companies
     arr_link = []
@@ -206,11 +225,11 @@ class InterfaceWeb
     end
     arr_link.reverse!.each_with_index do |path, i|
       page = Nokogiri::HTML(URI.open(URI.parse(URI.escape(path))))
-      if !page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].nil?
+      if page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].present?
         crawl_data_jobs_interface_1(page)
       elsif page.search('section .template-200').text.present?
         crawl_data_jobs_interface_2(page)
-      elsif page.search('.DetailJobNew ul li').size == 10 && !page.search('.right-col ul li').text.include?('Độ tuổi')
+      elsif page.search('.DetailJobNew ul li').size == SIZE_LI_INTERFACE_5 && !page.search('.right-col ul li').text.include?('Độ tuổi')
         crawl_data_jobs_interface_5(page)
       end
       puts "#{i} - #{path}"
