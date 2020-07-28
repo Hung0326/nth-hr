@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Description/Explanation of Person class
-class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+class History < ApplicationRecord
+  belongs_to :user
+  belongs_to :job
 end

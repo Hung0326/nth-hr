@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 # Description/Explanation of Person class
-class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+class Company < ApplicationRecord
+  has_many :jobs
 end
