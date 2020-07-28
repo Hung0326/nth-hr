@@ -36,10 +36,7 @@ class ImportDataCSV
     cities.each do |val|
       next if val.blank?
 
-      City.find_or_create_by(name: val) do |city|
-        city.name = val
-        city.area = DOMESTIC
-      end
+      City.find_or_create_by(name: val) { |city| city.area = DOMESTIC }
     end
   end
 
