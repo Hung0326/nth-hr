@@ -7,7 +7,6 @@ require 'src/interface_web'
 namespace :crawler do
   task populate: :environment do
     Company.find_or_create_by(name: 'Bảo mật') do |company|
-      company.name = 'Bảo mật'
       company.address = 'Vui lòng xem trong mô tả công việc'
       company.short_description = 'Vui lòng xem trong mô tả công việc'
     end
