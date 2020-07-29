@@ -4,7 +4,6 @@ require 'service/ftp'
 
 # Import data from CSV
 class ImportData
-  DOMESTIC = 1
   COMPANY_SECURITY = 1
 
   def import_data
@@ -39,7 +38,7 @@ class ImportData
     cities.each do |val|
       next if val.blank?
 
-      City.find_or_create_by(name: val) { |city| city.area = DOMESTIC }
+      City.find_or_create_by(name: val, area: City.areas['domestic'])
     end
   rescue StandardError => e
     logger.error "Import_cities: #{e}"
