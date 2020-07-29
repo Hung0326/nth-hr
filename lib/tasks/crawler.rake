@@ -13,6 +13,5 @@ namespace :crawler do
     cw = Crawler.new
     cw.craw_data_cities
     cw.craw_data_companies
-    cw.make_data
   end
 end
