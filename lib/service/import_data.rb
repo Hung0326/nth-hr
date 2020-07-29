@@ -8,7 +8,7 @@ class ImportData
   COMPANY_SECURITY = 1
 
   def import_data
-    csv_data = FtpSever.data_csv
+    csv_data = FtpSever.new.data_csv
     import_industries_from(csv_data)
     import_cities_from(csv_data)
     import_companies_from(csv_data)
@@ -57,10 +57,10 @@ class ImportData
     csv['name'].each_with_index do |name, index|
       desc = "#{csv['requirement'][index]} #{(csv['description'][index])}"
       company = Company.find_by name: csv['company name'][index].to_s.strip
-      id_company = company.blank? ? COMPANY_SECURITY : company.id
+      company_id = company.blank? ? COMPANY_SECURITY : company.id
       begin
         job = Job.create!(name: name,
-                          company_id: id_company,
+                          company_id: company_id,
                           level: csv['level'][index],
                           salary: csv['salary'][index],
                           create_date: Time.now,
