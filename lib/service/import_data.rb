@@ -15,10 +15,13 @@ class ImportData
     import_jobs_from(csv_data)
   end
 
+  def logger
+    @logger ||= Logger.new(Rails.root.join('log', 'import_data_csv.log'))
+  end
+
   private
 
   def import_industries_from(csv)
-    puts 'Import data industries . . .'
     industries = []
     industries += csv['category'].map(&:strip)
     industries.each do |val|
@@ -26,30 +29,30 @@ class ImportData
       val.gsub!('/', ' / ')
       Industry.find_or_create_by(name: val)
     end
-    puts 'Done parse csv industries'
+  rescue StandardError => e
+    logger.error "Import_industries: #{e}"
   end
 
   def import_cities_from(csv)
-    puts 'Import data cities . . .'
-    cities = csv['work place'].uniq.select(&:present?)
-    cities = cities.map { |val| val.delete('[]\"') }
+    city_names = csv['work place'].uniq.select(&:present?)
+    cities = city_names.map { |val| val.delete('[]\"') }
     cities.each do |val|
       next if val.blank?
 
       City.find_or_create_by(name: val) { |city| city.area = DOMESTIC }
     end
+  rescue StandardError => e
+    logger.error "Import_cities: #{e}"
   end
 
   def import_companies_from(csv)
-    puts 'Import data companies . . .'
     csv['company name'].each_with_index do |name, index|
       Company.find_or_create_by(name: name.strip) do |company|
         company.address           =  csv['company address'][index]
         company.short_description =  csv['benefit'][index]
       end
-      puts index
     rescue StandardError => e
-      puts e
+      logger.error "Import_companies: #{e}"
     end
   end
 
@@ -57,34 +60,25 @@ class ImportData
     csv['name'].each_with_index do |name, index|
       desc = "#{csv['requirement'][index]} #{(csv['description'][index])}"
       company = Company.find_by name: csv['company name'][index].to_s.strip
-      company_id = company.blank? ? COMPANY_SECURITY : company.id
+      company_id = company.try(:id) || COMPANY_SECURITY
       begin
-        job = Job.create!(name: name,
-                          company_id: company_id,
-                          level: csv['level'][index],
-                          salary: csv['salary'][index],
-                          create_date: Time.now,
-                          description: desc)
-        make_foreign_cities_table(csv['work place'][index], job.id)
-        make_foreign_industries_table(csv['category'][index], job.id)
+        job = Job.create(name: name,
+                         company_id: company_id,
+                         level: csv['level'][index],
+                         salary: csv['salary'][index],
+                         create_date: Time.now,
+                         description: desc)
+        city_names = csv['work place'][index].to_s.delete('[]\"')
+        city = City.find_or_create_by(name: city_names.strip) { |record| record.area = DOMESTIC }
+        job.cities << city
+
+        industry_name = csv['category'][index].to_s.gsub(',', '/').gsub('/', ' / ')
+        industry = Industry.find_or_create_by(name: industry_name.strip)
+        job.industries << industry
         puts index
       rescue StandardError => e
-        puts e
+        logger.error "Import_jobs: #{e}"
       end
     end
-  end
-
-  def make_foreign_cities_table(data, id_job)
-    data = data.to_s.delete('[]\"')
-    city = City.find_or_create_by(name: data.strip) { |record| record.area = DOMESTIC }
-    city_id = city.id
-    CityJob.create(job_id: id_job, city_id: city_id)
-  end
-
-  def make_foreign_industries_table(data, id_job)
-    industry_name = data.to_s.gsub(',', '/').gsub('/', ' / ')
-    industry = Industry.find_or_create_by(name: industry_name.strip)
-    industry_id = industry.id
-    IndustryJob.create(industry_id: industry_id, job_id: id_job)
   end
 end

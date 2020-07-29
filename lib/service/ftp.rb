@@ -13,8 +13,8 @@ class FtpSever
   NAME_CSV = 'jobs.zip'
 
   def data_csv
-    donwload_csv
-    CSV.parse(File.read('lib/csv/jobs.csv'), headers: true)
+    download_csv
+    CSV.parse(File.read(Rails.root.join('lib', 'csv', 'jobs.csv')), headers: true)
   end
 
   def logger
@@ -23,12 +23,16 @@ class FtpSever
 
   private
 
-  def donwload_csv
+  def jobs_csv_path
+    Rails.root.join(NAME_CSV)
+  end
+
+  def download_csv
     Net::FTP.open(CONTENT_SERVER_DOMAIN_NAME, CONTENT_SERVER_USER_NAME, CONTENT_SERVER_USER_PASSWORD) do |ftp|
       ftp.getbinaryfile(NAME_CSV)
-      Unzip.extract_zip(Rails.root.join(NAME_CSV), Rails.root.join('lib', 'csv'))
-      File.delete(Rails.root.join(NAME_CSV)) if File.exist?(Rails.root.join(NAME_CSV))
-      logger.info 'Donwload & extract success'
+      Unzip.extract_zip((jobs_csv_path), Rails.root.join('lib', 'csv'))
+      File.delete(jobs_csv_path) if File.exist?(jobs_csv_path)
+      logger.info 'Download & extract success'
     end
   end
 end
