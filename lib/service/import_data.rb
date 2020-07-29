@@ -78,13 +78,13 @@ class ImportData
     data = data.to_s.delete('[]\"')
     city = City.find_or_create_by(name: data.strip) { |record| record.area = DOMESTIC }
     city_id = city.id
-    CityJob.create!(job_id: id_job, city_id: city_id)
+    CityJob.create(job_id: id_job, city_id: city_id)
   end
 
   def make_foreign_industries_table(data, id_job)
-    data = data.to_s.gsub(',', '/').gsub('/', ' / ')
-    industry = Industry.find_or_create_by(name: data.strip)
+    industry_name = data.to_s.gsub(',', '/').gsub('/', ' / ')
+    industry = Industry.find_or_create_by(name: industry_name.strip)
     industry_id = industry.id
-    IndustryJob.create!(industry_id: industry_id, job_id: id_job)
+    IndustryJob.create(industry_id: industry_id, job_id: id_job)
   end
 end

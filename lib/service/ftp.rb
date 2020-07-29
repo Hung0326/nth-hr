@@ -10,24 +10,24 @@ class FtpSever
   CONTENT_SERVER_DOMAIN_NAME = '192.168.1.156'
   CONTENT_SERVER_USER_NAME = 'training'
   CONTENT_SERVER_USER_PASSWORD = 'training'
-  DIRECTORY_CSV = './jobs.zip'
+  NAME_CSV = 'jobs.zip'
 
   def data_csv
     donwload_csv
-    CSV.parse(File.read('lib/csv/jobs.csv'), headers: true)  
+    CSV.parse(File.read('lib/csv/jobs.csv'), headers: true)
   end
 
   def logger
-    @logger ||= Logger.new("#{Rails.root}/log/csv.log")
+    @logger ||= Logger.new(Rails.root.join('log', 'csv.log'))
   end
 
   private
 
   def donwload_csv
     Net::FTP.open(CONTENT_SERVER_DOMAIN_NAME, CONTENT_SERVER_USER_NAME, CONTENT_SERVER_USER_PASSWORD) do |ftp|
-      ftp.getbinaryfile('jobs.zip')
-      Unzip.extract_zip(DIRECTORY_CSV, 'lib/csv')
-      File.delete(DIRECTORY_CSV) if File.exist?(DIRECTORY_CSV)
+      ftp.getbinaryfile(NAME_CSV)
+      Unzip.extract_zip(Rails.root.join(NAME_CSV), Rails.root.join('lib', 'csv'))
+      File.delete(Rails.root.join(NAME_CSV)) if File.exist?(Rails.root.join(NAME_CSV))
       logger.info 'Donwload & extract success'
     end
   end
