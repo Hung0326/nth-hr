@@ -1,0 +1,49 @@
+<header class="cus_header">  
+  <div class="header_top">
+    <div class="header_top_logo">    
+    <%= link_to image_tag("logo.png", alt: "logo", class: "logo_header"), '/' %>
+    </div>    
+    <input class="check-nav-mobile" type="checkbox" name="" id="mobile-nav" hidden>
+    <label for="mobile-nav" class="lbn-nav">&#9776</label>
+    <label for="mobile-nav" class="overlay"></label>
+    <div class = "override"></div>
+    <div class="header_top_menu_right">
+      <ul class="list_menu_header_right">
+        <li class="list_item_menu_header_right">
+          <%= link_to 'Yêu thích', '#', class: 'link_item_menu_header_right' %>
+        </li>
+        <li class="list_item_menu_header_right">
+          <%= link_to 'Lịch sử', '#', class: 'link_item_menu_header_right' %>
+        </li>
+        <li class="list_item_menu_header_right">
+          <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_header_right' %>
+        </li>
+        <li class="list_item_menu_header_right">
+          <%= link_to 'Đăng ký', '#', class: 'link_item_menu_header_right' %>
+        </li>
+      </ul>
+    </div>
+    <%# mobile %>
+    <div class = "menu__mobile">
+      <div class = "content_menu_mobile">
+        <%= link_to image_tag("avatar.png", alt: "avatar", class: "avatar_manu"), '#' %>
+        <div class = "menu_mobile_vertical">
+          <ul class = "list_menu_mobile_vertical">
+            <li class = "item_menu_mobile_vertical">
+              <%= link_to 'Yêu thích', '#', class: 'link_item_menu_mobile' %>
+            </li>
+            <li class = "item_menu_mobile_vertical">
+              <%= link_to 'Lịch sử', '#', class: 'link_item_menu_mobile' %>
+            </li>
+            <li class = "item_menu_mobile_vertical">
+              <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_mobile' %>
+            </li>
+             <li class = "item_menu_mobile_vertical">
+              <%= link_to 'Đăng ký', '#', class: 'link_item_menu_mobile' %>
+            </li>
+          </ul>
+        </div>
+      <div>
+    </div>
+  </div>
+</header>
