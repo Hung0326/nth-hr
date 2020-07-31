@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'open-uri'
-require 'src/interface_web'
+require 'src/crawler'
+require 'src/crawler_job'
 
 # rake task
 namespace :crawler do
@@ -13,5 +14,6 @@ namespace :crawler do
     cw = Crawler.new
     cw.craw_data_cities
     cw.craw_data_companies
+    CrawlerJob.new.craw_data_jobs
   end
 end

@@ -4,5 +4,5 @@
 class City < ApplicationRecord
   has_many :city_jobs
   has_many :jobs, through: :city_jobs
-  enum area: { international: 0, domestic:1, range: 69 }
+  enum area: { international: 0, domestic: 1 }
 end
