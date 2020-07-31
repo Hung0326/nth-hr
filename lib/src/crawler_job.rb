@@ -44,7 +44,7 @@ class CrawlerJob < Crawler
   def add_data(data)
     id_company = Company.find_by name: data[:company_name]
     id_company = id_company.present? ? id_company.id : COMPANY_SECURITY
-    id_job = Job.create!(name: data[:name],
+    job = Job.create(name: data[:name],
                          company_id: id_company,
                          level: data[:level],
                          experience: data[:exprience],
@@ -52,28 +52,28 @@ class CrawlerJob < Crawler
                          create_date: data[:created_date],
                          expiration_date: data[:expiration_date],
                          description: data[:description])
-    create_industry_relation(data[:industry_name], id_job.id)
-    create_city_relation(data[:city_name], id_job.id)
+    create_industry_relation(data[:industry_name], job)
+    create_city_relation(data[:city_name], job)
   rescue StandardError => e
     logger.error "Crawler data jobs has error: #{e}"
   end
 
-  def create_industry_relation(data, id_job)
+  def create_industry_relation(data, job)
     return if data.blank? && id_job.blank?
 
     industries = data.split(',')
     industries.each do |val|
       val.gsub!('&amp;', '&') if val.include?('&amp;')
       industry = Industry.find_or_create_by name: val.strip
-      IndustryJob.create(industry_id: industry.id, job_id: id_job)
+      job.industries << industry
     end
   end
 
-  def create_city_relation(data, id_job)
+  def create_city_relation(data, job)
     cities = data.split(',')
     cities.each do |city|
       city = City.find_or_create_by(name: city.strip, area: City.areas['domestic'])
-      CityJob.create(job_id: id_job, city_id: city.id)
+      job.cities << city
     end
   end
 end

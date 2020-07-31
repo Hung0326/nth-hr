@@ -5,7 +5,7 @@ require 'open-uri'
 # Crawler data
 class Crawler
   COMPANY_SECURITY = 1
-  NUMBER_LINK = 100
+  NUMBER_LINK = 5
   SIZE_LI = 8
   RANGE = 69
 
@@ -51,8 +51,6 @@ class Crawler
 
   def craw_data_companies
     crawl_link(NUMBER_LINK).each do |url|
-      next if url.include?('javascript:void(0);')
-
       page = safe_link(url)
       company_name = page.search('.company-info .content .name').text
       Company.find_or_create_by(name: company_name) do |company|
