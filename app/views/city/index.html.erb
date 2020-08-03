@@ -1,14 +1,15 @@
-<% provide(:title,'Top thành phố') %>
+<% provide(:title, 'Top thành phố') %>
+<%= render 'shared/scroll_top' %>
 <div class="container">
   <div class="box_option_location">
     <div class="icon_box_option_location">
-      <span class="kl_icon_box_option_location">      
+      <span class="kl_icon_box_option_location">
         <i class="fas fa-search-location"></i>
       </span>
-    </div>    
+    </div>
     <div class="row">
       <div class="col-lg-12">
-        <div class="box_option_location_header">      
+        <div class="box_option_location_header">
           <span>Bạn muốn tìm việc trong hay ngoài nước?</span>
         </div>
       </div>
@@ -24,7 +25,7 @@
 <!-- Main -->
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">      
+    <div class="col-lg-12">
       <div class="title_list_city title_list_city_vn">
         <span>Các tỉnh, thành phố thuôc Việt Nam</span>
       </div>
@@ -35,7 +36,7 @@
           <% unless city.jobs.count < 1 %>
             <div class="col-lg-3 col-md-4">
               <%= render 'block_city_jobs', city: city %>
-            </div>          
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -51,8 +52,8 @@
           <% unless city.jobs.count < 1 %>
             <div class="col-lg-3 col-md-4">
               <%= render 'block_city_jobs', city: city %>
-            </div> 
-          <% end %>         
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

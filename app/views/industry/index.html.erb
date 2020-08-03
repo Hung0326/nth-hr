@@ -1,0 +1,20 @@
+<% provide(:title, 'Top nghành') %>
+<%= render 'shared/scroll_top' %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="title_list_city title_list_city_vn">
+        <span>Top nghành</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @industries.each do |industry| %>
+            <div class="col-lg-3 col-md-4">
+              <%= render 'block_industry', industry: industry %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 
 # Description/Explanation of Person class
 class Job < ApplicationRecord
+  NUMBER_LASTED_JOB = 5
   belongs_to :company
 
   has_many :industry_jobs
