@@ -10,8 +10,6 @@ class BlueInterface < Base
     page.search('.info-workplace .value a').map(&:text).join(',')
   end
 
-  def fill_created_date; end
-
   def fill_expiration_date
     page.xpath('//ul//li[position()=4]//div').text
   end
@@ -28,13 +26,13 @@ class BlueInterface < Base
     page.search('.left-col').to_s
   end
 
-  def check
+  def exist_level?
     noname = page.xpath('//ul//li[position()=2]/b').last.text
     noname.include?('Cấp bậc')
   end
 
   def fill_lever
-    check ? page.xpath('//ul//li[position()=2]/div').last.text : ''
+    exist_level? ? page.xpath('//ul//li[position()=2]/div').last.text : ''
   end
 
   def fill_experience

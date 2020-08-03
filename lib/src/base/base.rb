@@ -6,8 +6,6 @@ require 'logger'
 
 # Crawler data
 class Base
-  COMPANY_SECURITY = 1
-
   attr_accessor :job, :page
 
   def initialize(page)
@@ -54,7 +52,7 @@ class Base
   end
 
   def fill_created_date
-    page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].text
+    page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].try(:text)
   end
 
   def fill_expiration_date
@@ -74,20 +72,16 @@ class Base
     job[:description] = page.search('.tabs .tab-content .detail-row').to_s
   end
 
-  def check
+  def exist_experience?
     noname = page.search('//ul//li').text
     noname.include?('Kinh nghiệm')
   end
 
   def fill_lever
-    if check
-      page.xpath('//ul//li[position()=3]//p')[1].text.strip
-    else
-      page.xpath('//ul//li[position()=2]//p')[1].text
-    end
+    exist_experience? ? page.xpath('//ul//li[position()=3]//p')[1].text.strip : page.xpath('//ul//li[position()=2]//p')[1].text
   end
 
   def fill_experience
-    check ? page.xpath('//ul//li[position()=2]//p')[1].text.strip : ''
+    exist_experience? ? page.xpath('//ul//li[position()=2]//p')[1].text.strip : ''
   end
 end

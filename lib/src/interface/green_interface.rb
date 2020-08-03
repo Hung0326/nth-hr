@@ -14,8 +14,6 @@ class GreenInterface < Base
     page.search('.DetailJobNew ul li:nth-child(1) a').text
   end
 
-  def fill_created_date; end
-
   def fill_expiration_date
     page.xpath('//ul//li[last()-1]//span').children[1].text
   end
@@ -36,12 +34,12 @@ class GreenInterface < Base
     page.search('.DetailJobNew li:nth-child(2) span').text.strip
   end
 
-  def check_exp
+  def exist_experience?
     noname = page.search('.DetailJobNew li span').text
     noname.include?('Kinh nghiệm')
   end
 
   def fill_experience
-    check_exp ? page.search('.DetailJobNew li:nth-child(5) span').text.strip : ''
+    exist_experience? ? page.search('.DetailJobNew li:nth-child(5) span').text.strip : ''
   end
 end

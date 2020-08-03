@@ -4,9 +4,6 @@ require 'open-uri'
 
 # Crawler data
 class Crawler
-  COMPANY_SECURITY = 1
-  RANGE = 69
-
   attr_accessor :number_link
 
   def initialize(number_link)
@@ -48,7 +45,7 @@ class Crawler
     page = Nokogiri::HTML(URI.open('https://careerbuilder.vn/viec-lam/tat-ca-viec-lam-vi.html'))
     locations = page.search('#location option').map(&:text)
     locations.each_with_index do |val, index|
-      area = index > RANGE ? City.areas['international'] : City.areas['domestic']
+      area = index > City::RANGE ? City.areas['international'] : City.areas['domestic']
       City.find_or_create_by(name: val) { |city| city.area = area }
     end
   end

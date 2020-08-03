@@ -45,7 +45,7 @@ class CrawlerJob < Crawler
   end
 
   def add_data(data)
-    id_company = (Company.find_by name: data[:company_name]).try(:id) || COMPANY_SECURITY
+    id_company = (Company.find_by name: data[:company_name]).try(:id) || Company::COMPANY_SECURITY
     job = Job.create(name: data[:name],
                      company_id: id_company,
                      level: data[:level],
@@ -61,8 +61,6 @@ class CrawlerJob < Crawler
   end
 
   def create_industry_relation(data, job)
-    return if data.blank? && id_job.blank?
-
     industries = data.split(',')
     industries.each do |val|
       val.gsub!('&amp;', '&') if val.include?('&amp;')
