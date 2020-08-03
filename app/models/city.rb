@@ -4,6 +4,7 @@
 class City < ApplicationRecord
   has_many :city_jobs
   has_many :jobs, through: :city_jobs
+  scope :all_cities, -> { select :id, :name }
 
   def self.top_hot
     hash = {}
