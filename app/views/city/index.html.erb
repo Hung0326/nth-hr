@@ -1,0 +1,60 @@
+<% provide(:title,'Top thành phố') %>
+<div class="container">
+  <div class="box_option_location">
+    <div class="icon_box_option_location">
+      <span class="kl_icon_box_option_location">      
+        <i class="fas fa-search-location"></i>
+      </span>
+    </div>    
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box_option_location_header">      
+          <span>Bạn muốn tìm việc trong hay ngoài nước?</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn_option_location btn_option_location-vn">Việt Nam</button>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn_option_location btn_option_location-qt">Nước ngoài</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">      
+      <div class="title_list_city title_list_city_vn">
+        <span>Các tỉnh, thành phố thuôc Việt Nam</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @list_cities_domestic.each do |city| %>
+          <% unless city.jobs.count < 1 %>
+            <div class="col-lg-3 col-md-4">
+              <%= render 'block_city_jobs', city: city %>
+            </div>          
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="title_list_city title_list_city_qt">
+        <span>Quốc tế</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @list_cities_international.each do |city| %>
+          <% unless city.jobs.count < 1 %>
+            <div class="col-lg-3 col-md-4">
+              <%= render 'block_city_jobs', city: city %>
+            </div> 
+          <% end %>         
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
