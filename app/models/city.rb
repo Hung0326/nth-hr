@@ -5,13 +5,9 @@ class City < ApplicationRecord
   has_many :city_jobs
   has_many :jobs, through: :city_jobs
   scope :all_cities, -> { select :id, :name }
-
-  def self.top_hot
-    hash = {}
-    data_cities = City.all
-    data_cities.each do |val|
-      hash[val.name] = val.jobs.count
-    end
-    hash.sort_by { |k, v| v }.reverse
+  scope :top_cities, ->(number) do joins(:jobs)
+    .group(:city_id)
+    .order(Arel.sql('count(jobs.id) DESC'))
+    .take(number)
   end
 end

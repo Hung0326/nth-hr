@@ -4,14 +4,14 @@
       <span>Top thành phố</span>
     </div>
     <div class="row no-gutters">
-      <% @top_cities.each do |k,v| %>     
+      <% @top_cities.each do |city| %>     
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="box_info_city">
             <div class="ct_name">
-              <%= link_to k, '#' ,class: 'link_ct'%>    
+              <%= link_to city.name, '#' ,class: 'link_ct'%>    
             </div>
             <div class="ct_jobs_count">
-              <%= link_to  "#{v} công việc", '#' ,class: 'link_ct'%> 
+              <%= link_to  "#{city.jobs.count} công việc", '#' ,class: 'link_ct'%> 
             </div>  
           </div>
         </div>

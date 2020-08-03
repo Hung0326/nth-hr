@@ -4,14 +4,14 @@
       <span>Top các nghành phổ biến</span>
     </div>
     <div class="row no-gutters">
-      <% @top_industries.each do |name, jobs_count| %>     
+      <% @top_industries.each do |industry| %>     
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="box_info_city">
             <div class="ct_name">
-              <%= link_to name, '#',class: 'link_ct'%>    
+              <%= link_to industry.name, '#',class: 'link_ct'%>    
             </div>
             <div class="ct_jobs_count">
-              <%= link_to  "#{jobs_count} công việc", '#',class: 'link_ct'%> 
+              <%= link_to  "#{industry.jobs.count} công việc", '#',class: 'link_ct'%> 
             </div>  
           </div>
         </div>
