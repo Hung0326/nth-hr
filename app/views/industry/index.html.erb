@@ -8,12 +8,8 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <% @industries.each do |industry| %>
-            <div class="col-lg-3 col-md-4">
-              <%= render 'block_industry', industry: industry %>
-            </div>
-        <% end %>
+      <div class="row">        
+        <%= render partial: 'block_industry', collection: @industries, as: :industry %>
       </div>
     </div>
   </div>
