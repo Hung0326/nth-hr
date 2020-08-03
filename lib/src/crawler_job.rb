@@ -1,34 +1,35 @@
 # frozen_string_literal: true
 
-require 'src/crawler.rb'
-require_relative '../src/interface/red_interface.rb'
-require_relative '../src/interface/blue_interface.rb'
-require_relative '../src/interface/green_interface.rb'
-
 # Crawler data job
 class CrawlerJob < Crawler
-  def crawl_link(page)
+  SIZE_LI = 8
+
+  def crawl_link
     website_jobs = []
-    page.times do |i|
+    number_link.times do |i|
       page = Nokogiri::HTML(URI.open("https://careerbuilder.vn/viec-lam/tat-ca-viec-lam-trang-#{i + 1}-vi.html"))
       link_jobs = page.search('.figcaption .title .job_link @href')
-      website_jobs += link_jobs.map(&:value)
-      break if website_jobs.include?(link_make_stop_crawler)
+      link_jobs.each do |val|
+        link = val.value
+        return website_jobs if link.include?(link_make_stop_crawler)
+        website_jobs << link
+      end
     end
-    File.write(path_to_first_link, website_jobs[0])
-    website_jobs.select(&:present?)
+    website_jobs
   rescue StandardError => e
-    logger.error "Crawler link on page have error #{e}"
+    logger.error "Crawler link jobs on page have error #{e}"
   end
 
-  def reverse_arr
-    arr_link = []
-    crawl_link(NUMBER_LINK).each { |val| arr_link << val }
-    arr_link.reverse!
+  def parse_data
+    @box_links ||= crawl_link.reverse!
+  end
+
+  def refresh_first_link
+    File.write(path_to_first_link, parse_data.last)
   end
 
   def craw_data_jobs
-    reverse_arr.each do |path|
+    parse_data.each do |path|
       page = safe_link(path)
       if page.search('.item-blue .detail-box:nth-child(1) ul li:nth-child(1) p')[0].present?
         @data = RedInterface.new(page).create_data
@@ -38,12 +39,12 @@ class CrawlerJob < Crawler
         @data = GreenInterface.new(page).create_data
       end
       add_data(@data)
+      refresh_first_link
     end
   end
 
   def add_data(data)
-    id_company = Company.find_by name: data[:company_name]
-    id_company = id_company.present? ? id_company.id : COMPANY_SECURITY
+    id_company = (Company.find_by name: data[:company_name]).try(:id) || COMPANY_SECURITY
     job = Job.create(name: data[:name],
                          company_id: id_company,
                          level: data[:level],

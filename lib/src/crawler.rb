@@ -5,9 +5,13 @@ require 'open-uri'
 # Crawler data
 class Crawler
   COMPANY_SECURITY = 1
-  NUMBER_LINK = 5
-  SIZE_LI = 8
   RANGE = 69
+
+  attr_accessor :number_link
+
+  def initialize(number_link)
+    @number_link = number_link
+  end
 
   def path_to_first_link
     Rails.root.join('tmp', 'link.txt')
@@ -23,12 +27,12 @@ class Crawler
   end
 
   def safe_link(url)
-    Nokogiri::HTML(URI.open(URI.parse(URI.escape(url))))
+    Nokogiri::HTML(URI.open(URI.escape(url)))
   end
 
-  def crawl_link(page)
+  def crawl_link
     website_companies = []
-    page.times do |i|
+    number_link.times do |i|
       page = Nokogiri::HTML(URI.open("https://careerbuilder.vn/viec-lam/tat-ca-viec-lam-trang-#{i + 1}-vi.html"))
       link_companies = page.search('.figcaption .caption @href')
       website_companies += link_companies.map(&:value).uniq
@@ -50,7 +54,7 @@ class Crawler
   end
 
   def craw_data_companies
-    crawl_link(NUMBER_LINK).each do |url|
+    crawl_link.each do |url|
       page = safe_link(url)
       company_name = page.search('.company-info .content .name').text
       Company.find_or_create_by(name: company_name) do |company|

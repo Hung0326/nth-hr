@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../base/base.rb'
-
 # Inherience from base
 class BlueInterface < Base
   def fill_company_name
