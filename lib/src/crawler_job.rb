@@ -12,6 +12,7 @@ class CrawlerJob < Crawler
       link_jobs.each do |val|
         link = val.value
         return website_jobs if link.include?(link_make_stop_crawler)
+
         website_jobs << link
       end
     end
@@ -21,7 +22,7 @@ class CrawlerJob < Crawler
   end
 
   def parse_data
-    @box_links ||= crawl_link.reverse!
+    @parse_data ||= crawl_link.reverse!
   end
 
   def refresh_first_link
@@ -46,13 +47,13 @@ class CrawlerJob < Crawler
   def add_data(data)
     id_company = (Company.find_by name: data[:company_name]).try(:id) || COMPANY_SECURITY
     job = Job.create(name: data[:name],
-                         company_id: id_company,
-                         level: data[:level],
-                         experience: data[:exprience],
-                         salary: data[:salary],
-                         create_date: data[:created_date],
-                         expiration_date: data[:expiration_date],
-                         description: data[:description])
+                     company_id: id_company,
+                     level: data[:level],
+                     experience: data[:exprience],
+                     salary: data[:salary],
+                     create_date: data[:created_date],
+                     expiration_date: data[:expiration_date],
+                     description: data[:description])
     create_industry_relation(data[:industry_name], job)
     create_city_relation(data[:city_name], job)
   rescue StandardError => e

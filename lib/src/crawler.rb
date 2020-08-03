@@ -41,7 +41,7 @@ class Crawler
     end
     website_companies.select(&:present?)
   rescue StandardError => e
-    logger.error "Crawler link on page have error #{e}"    
+    logger.error "Crawler link on page have error #{e}"
   end
 
   def craw_data_cities
