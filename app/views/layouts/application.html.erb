@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Venjob</title>
+    <title><%= full_title(yield(:title)) %></title>    
+    <%= favicon_link_tag 'icontitle' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'shared/shim' %>     
   </head>
 
   <body>
-    <%= yield %>
+    <div class = "app">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/padding' %>              
+      <%= yield %>            
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
