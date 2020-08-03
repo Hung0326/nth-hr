@@ -1,25 +1,25 @@
 <div class="container">
-  <div class="border_box_cities">  
+  <div class="border_box_cities">
     <div class="box_text_five_jobs box_padding_city">
       <span>Top thành phố</span>
     </div>
     <div class="row no-gutters">
-      <% @top_cities.each do |city| %>     
+      <% @top_cities.each do |city| %>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="box_info_city">
             <div class="ct_name">
-              <%= link_to city.name, '#' ,class: 'link_ct'%>    
+              <%= link_to city.name, '#' ,class: 'link_ct' %>
             </div>
             <div class="ct_jobs_count">
-              <%= link_to  "#{city.jobs.count} công việc", '#' ,class: 'link_ct'%> 
-            </div>  
+              <%= link_to "#{city.jobs.count} công việc", '#' ,class: 'link_ct' %>
+            </div>
           </div>
         </div>
       <% end %>
       <div class="col-lg-12">
         <div class="box_info_city">
-          <div class="ct_name">    
-            <%= link_to 'Xem Thêm', '#' ,class: 'link_ct'%>
+          <div class="ct_name">
+            <%= link_to 'Xem Thêm', '#', class: 'link_ct' %>
           </div>
           <div class="ct_jobs_count">
             <i class="fas fa-ellipsis-h"></i>
