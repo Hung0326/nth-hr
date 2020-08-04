@@ -28,26 +28,16 @@
           <input type="search" name="" id="" class="custom_input_search" placeholder="Nhập tiêu đề, công ty, địa điểm...">
         </div>
         <div class="search_industries">
-            <div class="icon_list">
-              <i class="fa fa-list-ul" aria-hidden="true"></i>
-            </div>            
-            <select class="show_list_industries">            
-              <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-              <% @industries.each do |val| %>
-              <option value="<%= val.id %>"><%= val.name %></option>
-              <% end %>
-            </select>          
+          <div class="icon_list">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+          </div>
+          <%= select_tag 'industry', options_from_collection_for_select(@industries, "id", "name"), class: 'show_list_industries' %>
         </div>
         <div class="search_location">
           <div class="icon_list">
             <i class="fas fa-map-marker-alt"></i>
           </div>            
-          <select class="show_list_cities">            
-            <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-            <% @cities.each do |val| %>
-            <option value="<%= val.id %>"><%= val.name %></option>
-            <% end %>
-          </select>    
+          <%= select_tag 'city', options_from_collection_for_select(@cities, "id", "name", "1"), class: 'show_list_cities' %>
         </div>
         <div class="search_submit">
           <button type="submit" class="btn_search_submit">
@@ -71,24 +61,14 @@
         <div class="search_industries">
             <div class="icon_list">
               <i class="fa fa-list-ul" aria-hidden="true"></i>
-            </div>            
-            <select class="show_list_industries">            
-              <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-              <% @industries.each do |val| %>
-              <option value="<%= val.id %>"><%= val.name %></option>
-              <% end %>
-            </select>          
+            </div>
+            <%= select_tag 'industry', options_from_collection_for_select(@industries, "id", "name"), class: 'show_list_industries' %>       
         </div>
         <div class="search_location">
           <div class="icon_list">
             <i class="fas fa-map-marker-alt"></i>
-          </div>            
-          <select class="show_list_cities">            
-            <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-            <% @cities.each do |val| %>
-            <option value="<%= val.id %>"><%= val.name %></option>
-            <% end %>
-          </select>    
+          </div>
+          <%= select_tag 'city', options_from_collection_for_select(@cities, "id", "name", "1"), class: 'show_list_cities' %>   
         </div>
         <div class="search_submit">
           <button type="submit" class="btn_search_submit">
@@ -112,22 +92,12 @@
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="search_industries_mobile">
-              <select class="show_list_industries_mobile">            
-                <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-                <% @industries.each do |val| %>
-                <option value="<%= val.id %>"><%= val.name %></option>
-                <% end %>
-              </select>   
+              <%= select_tag 'industry', options_from_collection_for_select(@industries, "id", "name"), class: 'show_list_industries_mobile' %> 
             </div>
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="search_location_mobile">
-              <select class="show_list_cities_mobile">            
-                <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-                <% @cities.each do |val| %>
-                <option value="<%= val.id %>"><%= val.name %></option>
-                <% end %>
-              </select>    
+              <%= select_tag 'city', options_from_collection_for_select(@cities, "id", "name", "1"), class: 'show_list_cities_mobile' %> 
             </div>
           </div>
         </div>
