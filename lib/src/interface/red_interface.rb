@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
 # Inherience from base
-class RedInterface < Base
+module Src
+  module Interface
+    class RedInterface < Base::Base
+    end
+  end
 end
