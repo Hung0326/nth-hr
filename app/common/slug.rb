@@ -1,5 +1,5 @@
 module Slug
-  def to_slug(str)
+  def self.to_slug(str)
     str = str.to_s.strip.downcase
     accents = {
         %w[à á ạ ả ã â ầ ấ ậ ẩ ẫ ă ằ ắ ặ ẳ ẵ] => 'a',

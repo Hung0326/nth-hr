@@ -8,10 +8,10 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="box_info_city">
             <div class="ct_name">
-              <%= link_to industry.name, jobs_path(model: 'industry', id: industry.id), class: 'link_ct' %>
+              <%= link_to industry.name, jobs_path(model: 'industry', slug: industry.slug), class: 'link_ct' %>
             </div>
             <div class="ct_jobs_count">
-              <%= link_to "#{industry.jobs.count} công việc", jobs_path(model: 'industry', id: industry.id), class: 'link_ct' %>
+              <%= link_to "#{industry.jobs.count} công việc", jobs_path(model: 'industry', slug: industry.slug), class: 'link_ct' %>
             </div>  
           </div>
         </div>

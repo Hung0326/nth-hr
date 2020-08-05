@@ -2,6 +2,7 @@
 
 # Description/Explanation of Person class
 class City < ApplicationRecord
+  before_save :convert_to_slug
   RANGE = 69
   has_many :city_jobs
   has_many :jobs, through: :city_jobs
@@ -13,5 +14,9 @@ class City < ApplicationRecord
     .group(:city_id)
     .order(Arel.sql('count(jobs.id) DESC'))
     .take(number)
+  end
+
+  def convert_to_slug
+    self.slug = Slug.to_slug(self.name)
   end
 end

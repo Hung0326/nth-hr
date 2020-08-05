@@ -6,7 +6,7 @@ class JobController < ApplicationController
 
   def index
     model = params[:model].classify.constantize
-    obj = model.find(params[:id])
+    obj = model.find_by(slug: params[:slug])
     result(obj)
   end
 

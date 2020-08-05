@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'city/index'
 
   # Search
-  get 'jobs/:model/:id', to: 'job#index', as: :jobs
+  get 'jobs/:model/:slug', to: 'job#index', as: :jobs
 end
