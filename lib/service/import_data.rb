@@ -47,8 +47,8 @@ class ImportData
                             company_id: company_id,
                             level: val['level'],
                             salary: val['salary'],
-                            create_date: Time.now,
                             description: desc) do |job|
+        job.create_date = Time.now
         job.cities << city
         job.industries << industry
       end
