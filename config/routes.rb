@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'city/index'
 
   # Search
-  get 'jobs/industry/:key_industry', to: 'job#find_jobs_by_industry'
-  get 'jobs/company/:key_company', to: 'job#find_jobs_by_company'
-  get 'jobs/city/:key_city', to: 'job#find_jobs_by_city'
+  get 'jobs/:model/:id', to: 'job#find_jobs'
+
 end

@@ -19,8 +19,9 @@ class JobController < ApplicationController
     result(company)
   end
 
-  def find_jobs_by(model, parameter)
-    obj = model.find(parameter)
+  def find_jobs
+    d = params[:model].capitalize
+    obj = .find(params[:id])
     result(obj)
   end
 
