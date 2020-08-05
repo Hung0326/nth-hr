@@ -52,3 +52,4 @@ production:
   database: venjob_production
   username: venjob
   password: <%= ENV['VENJOB_DATABASE_PASSWORD'] %>
+  url: <%= ENV['JAWSDB_URL'] %>

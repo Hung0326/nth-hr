@@ -1,0 +1,12 @@
+<% provide(:title ,'Trang chủ') %>
+<%= render 'home/banner_and_search' %>  
+<div class="padding_index"></div>
+<% unless @job_count.nil? %>
+  <div class="box_text_five_jobs">
+    <span>Năm công việc mới nhất dành cho bạn</span>
+  </div>
+  <%= render 'box_five_job' %>
+  <%= render 'box_nine_city' %>
+  <%= render 'box_nine_industries' %>
+  <%= render 'shared/scroll_top' %>
+<% end %>

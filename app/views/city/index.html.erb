@@ -1,0 +1,49 @@
+<% provide(:title, 'Top thành phố') %>
+<%= render 'shared/scroll_top' %>
+<div class="container">
+  <div class="box_option_location">
+    <div class="icon_box_option_location">
+      <span class="kl_icon_box_option_location">
+        <i class="fas fa-search-location"></i>
+      </span>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box_option_location_header">
+          <span>Bạn muốn tìm việc trong hay ngoài nước?</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn_option_location btn_option_location-vn">Việt Nam</button>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn_option_location btn_option_location-qt">Nước ngoài</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="title_list_city title_list_city_vn">
+        <span>Các tỉnh, thành phố thuôc Việt Nam</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <%= render partial: 'block_city_jobs', collection: @list_cities_domestic, as: :city %>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="title_list_city title_list_city_qt">
+        <span>Quốc tế</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <%= render partial: 'block_city_jobs', collection: @list_cities_international, as: :city %>
+      </div>
+    </div>
+  </div>
+</div>

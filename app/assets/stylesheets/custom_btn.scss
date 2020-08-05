@@ -1,0 +1,141 @@
+
+.box_link_favotite {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px;
+  span {
+    color: #999;
+  }
+}
+.block_link_favorite :hover {
+  color: #e62958;
+}
+.block_link_favorite.md {
+  display: none;
+}
+.link_favorite {
+  color: #999;
+  z-index: 100000;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.block_click_favorite {
+  color: #999;
+  cursor: pointer;
+}
+.block_click_favorite.md {
+  display: none;
+}
+
+
+.link_favorite_top {
+  position: absolute;
+  z-index: 1;
+  // position: relative;
+  padding: 15px 20px;
+  top: 0;
+  right: 0;
+}
+.overlay_login {  
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  transition: linear 0.2s;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+}
+.overlay_login.show {
+  opacity: 1;
+  visibility: visible;
+  transition: linear 0.2s;
+}
+
+.modal_login {
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  width: 600px;  
+  transform: translateY(-50%) translateX(-50%);
+  background-color: #fff;
+  border-radius: 5px;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+// modal
+.icon_close_modal_login {
+  cursor: pointer;
+  float: right;
+  transform: translateX(-10px);
+  font-size: 22px;
+  font-weight: 100;
+  color: rgba($color: #999, $alpha: 0.9);  
+  span {
+  }
+}
+.modal_login_notice_text {
+  text-align: center;
+  color: #666;
+  font-size: 19px;
+  color: rgb(60, 71, 121);
+  span {
+
+  }
+}
+.modal_login_header {
+  background-color: #eee;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+}
+@media only screen and (max-width: 768px) {
+  .block_link_favorite.lg {
+    display: none;
+  }
+
+  .block_click_favorite.lg {
+    display: none;
+  }
+
+  .block_link_favorite.md {
+    display: block;
+  }
+
+  .block_click_favorite.md {
+    display: block;
+  }
+
+  .pagination li a {
+    font-size: 14px !important;
+  }
+  .modal_login {
+    width: 95vw;
+    font-size: 14px;
+  }
+
+  .modal_login_header {
+    font-size: 15px;
+  }
+  .icon_close_modal_login {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .pagination li a {
+    font-size: 13px !important;
+  }
+
+}
+
