@@ -2,26 +2,11 @@
 
 # Job controller
 class JobController < ApplicationController
-  before_action :load_data_dropdown, only: %i[find_jobs_by_industry find_jobs_by_city find_jobs_by_company]
+  before_action :load_data_dropdown, only: :index
 
-  def find_jobs_by_city
-    city = City.find(params[:key_city])
-    result(city)
-  end
-
-  def find_jobs_by_industry
-    industry = Industry.find(params[:key_industry])
-    result(industry)
-  end
-
-  def find_jobs_by_company
-    company = Company.find(params[:key_company])
-    result(company)
-  end
-
-  def find_jobs
-    d = params[:model].capitalize
-    obj = .find(params[:id])
+  def index
+    model = Object.const_get(params[:model].capitalize)
+    obj = model.find(params[:id])
     result(obj)
   end
 

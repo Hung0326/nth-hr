@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-md-4">
   <div class="box_cityjobs">
     <div class="box_cityjobs_name">    
-      <%= link_to industry.name, "/jobs/industry/#{industry.id}", class: 'cityjobs_link' %>
+      <%= link_to industry.name, jobs_path(model: 'industry', id: industry.id), class: 'cityjobs_link' %>
     </div>
     <div class="box_cityjobs_count">
       <span><%= industry.jobs.count %> Công việc</span>
