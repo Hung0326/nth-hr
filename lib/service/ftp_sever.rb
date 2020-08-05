@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'service/unzip'
 require 'net/ftp'
 require 'logger'
 require 'csv'
@@ -30,9 +29,11 @@ class FtpSever
   def download_csv
     Net::FTP.open(CONTENT_SERVER_DOMAIN_NAME, CONTENT_SERVER_USER_NAME, CONTENT_SERVER_USER_PASSWORD) do |ftp|
       ftp.getbinaryfile(NAME_CSV)
-      Unzip.extract_zip((jobs_csv_path), Rails.root.join('lib', 'csv'))
+      Unzip.extract_zip(jobs_csv_path, Rails.root.join('lib', 'csv'))
       File.delete(jobs_csv_path) if File.exist?(jobs_csv_path)
       logger.info 'Download & extract success'
+    rescue StandardError => e
+      logger.error "Donwload csv have error: #{e}"
     end
   end
 end
