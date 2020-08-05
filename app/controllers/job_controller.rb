@@ -5,7 +5,7 @@ class JobController < ApplicationController
   before_action :load_data_dropdown, only: :index
 
   def index
-    model = Object.const_get(params[:model].capitalize)
+    model = params[:model].classify.constantize
     obj = model.find(params[:id])
     result(obj)
   end
@@ -23,3 +23,4 @@ class JobController < ApplicationController
     render 'result_data'
   end
 end
+Object.const_get('cities'.classify)
