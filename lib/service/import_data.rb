@@ -43,14 +43,12 @@ class ImportData
       industry_name = val['category'].gsub(',', '/').gsub('/', ' / ')
       industry = Industry.find_or_create_by(name: industry_name.strip)
 
-      Job.find_or_create_by(name: val['name'],
-                            company_id: company_id,
-                            level: val['level'],
-                            salary: val['salary'],
-                            description: desc) do |job|
-        job.create_date = Time.now
-        job.cities << city
-        job.industries << industry
+      Job.find_or_create_by(name: val['name'], company_id: company_id) do |job|
+        job.level = val['level']
+        job.salary = val['salary']
+        job.description = desc
+        job.city_ids.blank? ? job.cities << city : job.cities == city
+        job.industry_ids.blank? ? job.industries << industry : job.industries == industry
       end
     rescue StandardError => e
       logger.error "Import_jobs: #{e}"
