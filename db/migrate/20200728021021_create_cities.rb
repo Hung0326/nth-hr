@@ -3,7 +3,7 @@
 # Description/Explanation of Person class
 class CreateCities < ActiveRecord::Migration[5.2]
   def change
-    create_table :cities, options: 'COLLATE=utf8_general_ci' do |t|
+    create_table :cities do |t|
       t.string :name
       t.boolean :area
       t.timestamps

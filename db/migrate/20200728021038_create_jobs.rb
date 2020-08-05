@@ -3,7 +3,7 @@
 # Description/Explanation of Person class
 class CreateJobs < ActiveRecord::Migration[5.2]
   def change
-    create_table :jobs, options: 'COLLATE=utf8_general_ci' do |t|
+    create_table :jobs do |t|
       t.string :name
       t.integer :company_id
       t.string :level
