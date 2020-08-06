@@ -5,6 +5,8 @@ class City < ApplicationRecord
   before_save :convert_to_slug
   RANGE = 69
   has_many :city_jobs
+  has_many :jobs, through: :city_jobs  
+  enum area: { international: 0, domestic:1}
   has_many :jobs, through: :city_jobs
   enum area: { international: 0, domestic: 1 }
   scope :domestic, -> { where(area: 1) }

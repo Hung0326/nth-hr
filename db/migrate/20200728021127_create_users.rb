@@ -3,7 +3,7 @@
 # Description/Explanation of Person class
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :users, options: 'COLLATE=utf8_general_ci' do |t|
+    create_table :users do |t|
       t.string :email
       t.string :name
       t.string :password_digest
