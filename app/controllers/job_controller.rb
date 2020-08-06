@@ -23,4 +23,3 @@ class JobController < ApplicationController
     render 'result_data'
   end
 end
-Object.const_get('cities'.classify)

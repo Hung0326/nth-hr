@@ -12,6 +12,6 @@ class Industry < ApplicationRecord
   end
 
   def convert_to_slug
-    self.slug = Slug.to_slug(self.name)
+    self.slug = Slug.to_slug(self.name + ' ' + rand(10000).to_s)
   end
 end
