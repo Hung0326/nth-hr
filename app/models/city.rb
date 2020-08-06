@@ -7,8 +7,6 @@ class City < ApplicationRecord
   has_many :city_jobs
   has_many :jobs, through: :city_jobs  
   enum area: { international: 0, domestic:1}
-  has_many :jobs, through: :city_jobs
-  enum area: { international: 0, domestic: 1 }
   scope :domestic, -> { where(area: 1) }
   scope :international, -> { where(area: 0) }
   scope :all_cities, -> { select :id, :name }
