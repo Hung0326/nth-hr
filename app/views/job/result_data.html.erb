@@ -6,7 +6,11 @@
     <div class="col-lg-12">
       <div class="breadcrumb_total_search">
         <span class="breadcrumb-item active">
-          Có&nbsp;<b><%= @data.total_count %></b>&nbsp;kết quả phù hợp với từ khóa&nbsp;<b><%= @keyword %></b>&nbsp;      
+          <% if @data.total_count > 0 %>
+            Có&nbsp;<b><%= @data.total_count %></b>&nbsp;kết quả phù hợp với từ khóa&nbsp;<b><%= @keyword %></b>&nbsp;
+          <% else %>
+            Không có kết quả phù hợp với từ khóa&nbsp;<b><%= @keyword %></b>
+          <% end %>
         </span>
       </div>
     </div>

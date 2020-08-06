@@ -17,6 +17,6 @@ class City < ApplicationRecord
   end
 
   def convert_to_slug
-    self.slug = Slug.to_slug(self.name + ' ' + rand(10000).to_s)
+    self.slug = Slug.to_slug("#{name} #{rand(10000)}")
   end
 end

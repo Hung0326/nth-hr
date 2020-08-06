@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# /home/hungnt/project/venjob/app/common/slug.rb
 module Slug
   def self.to_slug(str)
     str = str.to_s.strip.downcase

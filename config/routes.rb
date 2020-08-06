@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   # Search
   get 'jobs/:model/:slug', to: 'job#index', as: :jobs
+
+  # Rails error
+  match '/404', to: 'error#file_not_found', via: :all
+  match '/500', to: 'error#internal_server_error', via: :all
 end

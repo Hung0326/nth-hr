@@ -7,7 +7,7 @@ class JobController < ApplicationController
   def index
     model = params[:model].classify.constantize
     obj = model.find_by(slug: params[:slug])
-    result(obj)
+    render_result(obj)
   end
 
   private
@@ -17,7 +17,7 @@ class JobController < ApplicationController
     @cities = City.select(:id, :name)
   end
 
-  def result(obj)
+  def render_result(obj)
     @keyword = obj.name
     @data = obj.jobs.page(params[:page])
     render 'result_data'

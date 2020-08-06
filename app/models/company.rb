@@ -7,6 +7,6 @@ class Company < ApplicationRecord
   has_many :jobs
 
   def convert_to_slug
-    self.slug = Slug.to_slug(self.name)
+    self.slug = Slug.to_slug("#{name} #{rand(10000)}")
   end
 end
