@@ -202,8 +202,12 @@ $main-color: #23303D;
   }
   .menu__mobile {
     width: 40vw;
+    overflow: scroll;
   }
-
+  .content_menu_mobile {
+    height: 100%;
+    width: 100%;
+  }
   .lbn-nav {
     display: block;
   }
