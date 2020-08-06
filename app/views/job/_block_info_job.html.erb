@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="box_jobs">
+        <div class="col-sm-12 d-block d-sm-none">
+          <div class="link_favorite_top block_link_favorite md">
+            <span><%= link_to '<i class="far fa-heart"></i>'.html_safe, '#', class: 'link_favorite' %><span>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-sm-10 col-md-9 col-lg-10">
+              <div class="box_info">
+                <div class="lol">
+                  <%= link_to data.name, '#', class: 'job_name' %>
+                </div>
+                <div class="cop">
+                  <h5 class="box_info_copany_name"><i class="far fa-building"></i> <%= data.company.name %></h5>
+                </div>
+                <div class="loc">
+                  <h5 class="box_info_location"><i class="fas fa-map-marker-alt"></i>
+                    <%= data.cities.map(&:name).join(' | ') %>
+                  </h5>
+                </div>
+                <h5 class="box_info_salary"><i class="fas fa-dollar-sign"></i>&nbsp; Lương: <%= data.salary %></h5>
+                <div class="coc">
+                  <h5 class="box_info_des"><%= strip_tags(data.description) %></h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-md-3 d-none d-sm-block col-lg-2">
+              <div class="box_link_favotite">
+                <div class="block_link_favorite lg">
+                  <span><i class="far fa-heart"></i> <%= link_to 'Yêu thích', '#', class: 'link_favorite' %><span>
+                </div>
+                <div class="block_link_favorite md">
+                  <span><%= link_to '<i class="far fa-heart"></i>'.html_safe, '#', class: 'link_favorite' %><span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

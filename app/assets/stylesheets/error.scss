@@ -1,0 +1,41 @@
+// Place all the styles related to the error controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.box_content_404 {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  // height: 900px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.box_content_404_img {
+  margin: auto;
+  width: 700px
+}
+.img_404 {
+  width: 100%;
+}
+.box_content_404_text {
+  text-align: center;
+  span {
+    font-size: 30px;
+    font-weight: 800;
+    color: #99a6d5;
+  }
+}
+.box_content_404_back_to_home {
+  text-align: center;
+  a {
+    font-size: 22px;
+    color: #1a2c55;
+    &:hover {
+      text-decoration: none;
+      color: red;
+    }
+  }
+}

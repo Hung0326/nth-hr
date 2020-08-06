@@ -1,0 +1,20 @@
+<% provide(:title, 'Page Not Found') %>
+<div class="box_content_404">
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="box_content_404_img">
+        <%= image_tag '404.svg', class: 'img_404' %>
+      </div>
+    </div><br>
+    <div class="col-lg-12">
+      <div class="box_content_404_text">
+        <span>Chúng tôi không tìm thấy trang bạn bạn yêu cầu!</span>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="box_content_404_back_to_home">
+        <%= link_to 'Cùng mình quay lại trang chủ nhé', root_path %>
+      </div>
+    </div>
+  </div>
+</div>

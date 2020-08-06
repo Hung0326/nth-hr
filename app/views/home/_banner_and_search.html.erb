@@ -15,55 +15,45 @@
 
   <!-- Process search pc-->
   <div class="box-search">
-    <div class="search_scaffold">  
+    <div class="search_scaffold">
       <div class = "total_job">
         <% if @job_count.blank? %>
           <h4 class="show_total_job">Khám phá ngay những việc làm tốt nhất trên VenJob</h4>
         <% else %>
           <h4 class="show_total_job">Khám phá ngay <b><%= @job_count%></b> việc làm tốt nhất trên VenJob</h4>
         <% end %>
-      </div>  
+      </div>
       <div class="filter_box">
         <div class="search_input">
           <input type="search" name="" id="" class="custom_input_search" placeholder="Nhập tiêu đề, công ty, địa điểm...">
         </div>
         <div class="search_industries">
-            <div class="icon_list">
-              <i class="fa fa-list-ul" aria-hidden="true"></i>
-            </div>            
-            <select class="show_list_industries">            
-              <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-              <% @industries.each do |val| %>
-              <option value="<%= val.id %>"><%= val.name %></option>
-              <% end %>
-            </select>          
+          <div class="icon_list">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+          </div>
+          <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), class: 'show_list_industries' %>
         </div>
         <div class="search_location">
           <div class="icon_list">
             <i class="fas fa-map-marker-alt"></i>
-          </div>            
-          <select class="show_list_cities">            
-            <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-            <% @cities.each do |val| %>
-            <option value="<%= val.id %>"><%= val.name %></option>
-            <% end %>
-          </select>    
+          </div>
+          <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', '1'), class: 'show_list_cities' %>
         </div>
         <div class="search_submit">
           <button type="submit" class="btn_search_submit">
             <i class="fas fa-search"></i>
               Tìm việc
-          </button>          
+          </button>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
   <!-- Process search tablet-->
   <div class="box-search-tablet">
-    <div class="search_scaffold-tablet">  
+    <div class="search_scaffold-tablet">
       <div class = "total_job">
         <h4 class="show_total_job">Khám phá ngay <b><%=@job_count%></b> việc làm tốt nhất trên VenJob</h4>
-      </div>  
+      </div>
       <div class="filter_box filter_box_tablet">
         <div class="search_input">
           <input type="search" name="" id="" class="custom_input_search" placeholder="Nhập tiêu đề, công ty, địa điểm...">
@@ -71,33 +61,23 @@
         <div class="search_industries">
             <div class="icon_list">
               <i class="fa fa-list-ul" aria-hidden="true"></i>
-            </div>            
-            <select class="show_list_industries">            
-              <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-              <% @industries.each do |val| %>
-              <option value="<%= val.id %>"><%= val.name %></option>
-              <% end %>
-            </select>          
+            </div>
+            <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), class: 'show_list_industries' %>
         </div>
         <div class="search_location">
           <div class="icon_list">
             <i class="fas fa-map-marker-alt"></i>
-          </div>            
-          <select class="show_list_cities">            
-            <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-            <% @cities.each do |val| %>
-            <option value="<%= val.id %>"><%= val.name %></option>
-            <% end %>
-          </select>    
+          </div>
+          <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', '1'), class: 'show_list_cities' %>
         </div>
         <div class="search_submit">
           <button type="submit" class="btn_search_submit">
             <i class="fas fa-search"></i>
               Tìm việc
-          </button>          
+          </button>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
   <div class="box-show-total-jobs-mobile">
     <span>Khám phá ngay <%=@job_count%></b> việc làm tốt nhất trên VenJob</span>
@@ -112,22 +92,12 @@
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="search_industries_mobile">
-              <select class="show_list_industries_mobile">            
-                <option value="*" selected disabled hidden class="select_first">Tất cả ngành nghề</option>
-                <% @industries.each do |val| %>
-                <option value="<%= val.id %>"><%= val.name %></option>
-                <% end %>
-              </select>   
+              <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), class: 'show_list_industries_mobile' %> 
             </div>
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="search_location_mobile">
-              <select class="show_list_cities_mobile">            
-                <option value="*" selected disabled hidden class="select_first">Tất cả Tỉnh thành</option>
-                <% @cities.each do |val| %>
-                <option value="<%= val.id %>"><%= val.name %></option>
-                <% end %>
-              </select>    
+              <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', '1'), class: 'show_list_cities_mobile' %> 
             </div>
           </div>
         </div>
@@ -139,7 +109,7 @@
           <button type="submit" class="btn_search_submit">
             <i class="fas fa-search"></i>
               Tìm việc
-          </button>   
+          </button>
         </div>
       </div>
     </div>
