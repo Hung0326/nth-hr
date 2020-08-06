@@ -121,7 +121,6 @@ $main-color: #23303D;
   position: absolute;  
   height: 100vh;  
   transition: 0.3s;
-  // background-color: whitesmoke;
   transform: translateX(-120%);
   margin-top: 40px;
   background-color: #2d2d2d;
@@ -205,7 +204,7 @@ $main-color: #23303D;
     overflow: scroll;
   }
   .content_menu_mobile {
-    height: 100%;
+    height: 130vh;
     width: 100%;
   }
   .lbn-nav {
@@ -240,9 +239,13 @@ $main-color: #23303D;
   .menu__mobile {
     width: 65vw;
   }
+  .breadcrumb-item.active {
+    padding: 4px 0px;
+  }
   .breadcrumb_total_search {
     span {
       font-size: 14px;
+      line-height: 24px;
     }
   }
 }
@@ -1095,12 +1098,12 @@ $main-color: #23303D;
 .banner_detail {
   width: 100%;
   height: 300px;
-  background-image: url('11');
+  background-image: url('11.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
-.breadcrumb li a{
-  text-decoration: none;
+.breadcrumb a{
+  text-decoration: none !important;
   &:hover {
     text-decoration: none !important;
   }
@@ -1109,6 +1112,10 @@ $main-color: #23303D;
 
   h1 {
     font-size: 30px;
+  }
+  span {
+    font-size: 22px;
+    color: #666;
   }
 }
 .btn-apply_job {  
@@ -1187,7 +1194,7 @@ $main-color: #23303D;
 
 .breadcrumb_total_search {
   background-color: #e9ecef;
-  height: 48px;
+  height: auto;
   font-size: 16px;
   line-height: 48px;
   border-radius: 4px;
@@ -1335,5 +1342,8 @@ $main-color: #23303D;
    font-size: 18px !important; 
   }
 }
-
+.box_detail_jobs_location a{
+  font-weight: bold;
+  color: rgb(211, 48, 48);
+}
 
