@@ -7,9 +7,9 @@
       <div class="breadcrumb_total_search">
         <span class="breadcrumb-item active">
           <% if @data.total_count > 0 %>
-          <div style="word-wrap: break-word;">
-            <span>Có&nbsp;<b><%= @data.total_count %></b>&nbsp;kết quả phù hợp với từ khóa&nbsp;</span><b><%= @keyword %></b>&nbsp;
-          </div>
+            <div style="word-wrap: break-word;">
+              <span>Có&nbsp;<b><%= @data.total_count %></b>&nbsp;kết quả phù hợp với từ khóa&nbsp;</span><b><%= @keyword %></b>&nbsp;
+            </div>
           <% else %>
             Không có kết quả phù hợp với từ khóa&nbsp;<b><%= @keyword %></b>
           <% end %>
