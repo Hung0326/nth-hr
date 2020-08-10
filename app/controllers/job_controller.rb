@@ -10,7 +10,15 @@ class JobController < ApplicationController
     render_result(obj)
   end
 
-  private
+  def detail
+    @job = Job.find(params[:id]).decorate
+    cities = @job.cities.first
+    industries = @job.industries.first
+    add_breadcrumb 'Trang chủ', root_path
+    add_breadcrumb cities.name, jobs_path(model: 'city', slug: cities.slug)
+    add_breadcrumb industries.name, jobs_path(model: 'industry', slug: industries.slug)
+    add_breadcrumb @job.name
+  end
 
   def load_data_dropdown
     @industries = Industry.order(name: :asc).all

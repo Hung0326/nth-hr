@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'industries', to: 'industry#index', as: :industry_index
   get 'cities', to: 'city#index', as: :city_index
-
+  # Details job
+  get 'detail/:id', to: 'job#detail', as: :detail_job
   # Search
   get 'jobs/:model/:slug', to: 'job#index', as: :jobs
 

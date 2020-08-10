@@ -1,0 +1,93 @@
+<% provide(:title, @job.name) %>
+<div class="container">
+  <div class="banner_detail">
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs :separator => '&nbsp;/&nbsp;'.html_safe %>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="job_title">
+        <h1><%= @job.name %></h1>
+        <span><i class="far fa-building"></i> <%= link_to @job.company.name, jobs_path(model: 'company', slug: @job.company.slug), class: 'link_ct apply_job' %></span>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="btn_apply_job">
+        <%= link_to 'Nộp CV ngay', '#', class: 'btn btn-apply_job' %>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="box_detail_jobs">
+        <div class="box_detail_jobs_location">
+          <span><i class="fas fa-map-marker-alt"></i> Địa điểm làm việc: </span>
+          <% @job.cities.each do |x| %>
+            <%= link_to "&nbsp;#{x.name}&nbsp;".html_safe , jobs_path(model: 'city', slug: x.slug), class: 'link_ct apply_job link_optimize'%>
+          <% end %>        
+        </div>
+        <div class="box_detail_jobs_salary">
+          <br>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="detail_info">
+                <span><i class="fab fa-linode"></i> Lương: <%= @job.salary %></span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="detail_info">
+                <span><i class="fab fa-linode"></i> Ngày đăng tin: <%= @job.posted_at %></span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="detail_info">
+                <span><i class="fab fa-linode"></i> Ngày hết hạn: <%= @job.expiration_date.present? ? @job.expired_at : 'đang cập nhật' %></span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="detail_info">
+                <span><i class="fab fa-linode"></i> Kinh nghiệm: <%= @job.experience %></span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="detail_info">
+                <span><i class="fab fa-linode"></i> Cấp bậc: <%= @job.level %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="box_detail_jobs">
+        <% if @job.description.include?('div') %>
+          <%= @job.description.html_safe %>
+        <% else %>
+          <pre class="pre_desc"><%= @job.description %></pre>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <div class="btn_apply_job">
+        <%= link_to 'Nộp CV ngay', '#', class: 'btn btn-apply_job' %>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div class="btn_apply_job">
+        <%= link_to 'Yêu thích', '#', class: 'btn btn-apply_job_favorite' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/scroll_top' %>
