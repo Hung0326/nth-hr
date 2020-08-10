@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# pattern job decorator
-module JobDecorator
+# Decorator
+class JobDecorator < Draper::Decorator
+  delegate_all
   def posted_at
     created_at.strftime('%d - %m - %Y')
   end

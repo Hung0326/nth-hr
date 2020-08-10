@@ -11,7 +11,7 @@ class JobController < ApplicationController
   end
 
   def detail
-    @job = Job.find(params[:id])
+    @job = Job.find(params[:id]).decorate
     cities = @job.cities.first
     industries = @job.industries.first
     add_breadcrumb 'Trang chủ', root_path

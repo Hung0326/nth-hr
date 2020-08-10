@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 env :PATH, ENV['PATH']
-every 1.hours do
+every 10.minute do
   rake 'crawler:populate'
 end
