@@ -10,17 +10,26 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <%= link_to 'Yêu thích', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to 'Favorite', '#', class: 'link_item_menu_header_right' %>
         </li>
         <li class="list_item_menu_header_right">
-          <%= link_to 'Lịch sử', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to 'History', '#', class: 'link_item_menu_header_right' %>
         </li>
-        <li class="list_item_menu_header_right">
-          <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_header_right' %>
-        </li>
-        <li class="list_item_menu_header_right">
-          <%= link_to 'Đăng ký', '#', class: 'link_item_menu_header_right' %>
-        </li>
+        <% if user_signed_in? %>
+          <li class="list_item_menu_header_right">
+            <%= link_to 'My page', my_page_path, class: 'link_item_menu_header_right' %>
+          </li>
+          <li class="list_item_menu_header_right">
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'link_item_menu_header_right' %>
+          </li>
+        <% else %>
+          <li class="list_item_menu_header_right">
+            <%= link_to 'Sign in', new_user_session_path, class: 'link_item_menu_header_right' %>
+          </li>
+          <li class="list_item_menu_header_right">
+            <%= link_to 'Register', new_user_registration_path, class: 'link_item_menu_header_right' %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <%# mobile %>
@@ -30,17 +39,27 @@
         <div class = "menu_mobile_vertical">
           <ul class = "list_menu_mobile_vertical">
             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Yêu thích', '#', class: 'link_item_menu_mobile' %>
+              <%= link_to 'Favorite', '#', class: 'link_item_menu_mobile' %>
             </li>
             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Lịch sử', '#', class: 'link_item_menu_mobile' %>
+              <%= link_to 'History', '#', class: 'link_item_menu_mobile' %>
             </li>
-            <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_mobile' %>
-            </li>
-             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Đăng ký', '#', class: 'link_item_menu_mobile' %>
-            </li>
+
+            <% if user_signed_in? %>
+              <li class = "item_menu_mobile_vertical">
+                <%= link_to 'My page', my_page_path, class: 'link_item_menu_mobile' %>
+              </li>
+              <li class = "item_menu_mobile_vertical">
+                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'link_item_menu_mobile' %>
+              </li>
+            <% else %>
+              <li class = "item_menu_mobile_vertical">
+                <%= link_to 'Sign in', new_user_session_path, class: 'link_item_menu_mobile' %>
+              </li>
+              <li class = "item_menu_mobile_vertical">
+                <%= link_to 'Register', new_user_registration_path, class: 'link_item_menu_mobile' %>
+              </li>
+            <% end %>
           </ul>
         </div>
       <div>

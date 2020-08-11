@@ -31,6 +31,8 @@ gem 'whenever'
 gem 'kaminari'
 gem 'breadcrumbs_on_rails'
 gem 'draper'
+gem 'devise'
+gem 'carrierwave'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

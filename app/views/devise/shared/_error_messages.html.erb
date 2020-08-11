@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% flash[:error] = 'Vui lòng kiểm tra lại thông tin' %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -14,7 +14,9 @@
   <body>
     <div class = "app">
       <%= render 'layouts/header' %>
-      <%= render 'layouts/padding' %>              
+      <%= custom_bootstrap_flash %>
+      <% flash.discard %>
+      <%= render 'layouts/padding' %>
       <%= yield %>            
       <%= render 'layouts/footer' %>
     </div>
