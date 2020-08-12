@@ -10,14 +10,18 @@
         <hr>
         <div class="row">
           <div class="col-lg-12">
-            <span>Email: <%= user_signed_in? ? current_user.name : 'N/A'%> </span>
+            <span>Email: <%= current_user.email %> </span>
           </div>
           <div class="col-lg-12">
-            <span>Name: <%= user_signed_in? ? current_user.email : 'N/A'%></span>
+            <span>Name: <%= current_user.name %></span>
           </div>
           <div class="col-lg-12">
-            CV: <%= link_to user_signed_in? ? current_user.cv.identifier : 'N/A', current_user.cv.url, target: '_blank', class: 'link_ct pdf' %>
-            <%= link_to '<i class="fas fa-download"></i>'.html_safe, current_user.cv.url, download: current_user.cv.identifier %>
+            <% if  current_user.cv.identifier %>
+              CV: <%= link_to current_user.cv.identifier, current_user.cv.url, target: '_blank', class: 'link_ct pdf' %>
+              <%= link_to '<i class="fas fa-download"></i>'.html_safe, current_user.cv.url, download: current_user.cv.identifier %>
+            <% else %>
+              CV: <span class="link_ct">No file</span>
+            <% end %>
           </div>
           <hr>
           <div class="col-lg-6">

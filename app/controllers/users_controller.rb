@@ -2,15 +2,11 @@
 
 # User controller
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: :my_page
   def confirm_sign_up
     render :confirm
   end
 
   def my_page
-    if user_signed_in?
-      render :my_page
-    else
-      redirect_to root_path
-    end
   end
 end
