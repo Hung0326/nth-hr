@@ -1,3 +1,4 @@
+<% provide(:title, 'Update info') %>
 <div class="container">
   <div class="box_form">
     <div class="row">
@@ -11,7 +12,7 @@
             <%= render 'devise/shared/error_messages', resource: resource %>
           </div>
           <div class="col-md-3">
-            <%= f.label :name %>:
+            <%= f.label :name %>
           </div>
           <div class="col-md-9">
             <%= f.text_field :name, autofocus: true, class: 'form-control' %>
@@ -22,7 +23,7 @@
         <% end %>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :email %>:
+            <%= f.label :email %>
           </div>
           <div class="col-md-9">
             <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
@@ -30,7 +31,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :cv %>:
+            <%= f.label :cv %>
           </div>
           <div class="col-md-9">
             <%= f.file_field :cv, autofocus: true, class: 'pppp' %>      
@@ -39,7 +40,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :password %>:
+            <%= f.label :password %>
           </div>
           <div class="col-md-9">
             <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
@@ -51,7 +52,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :password_confirm %>:
+            <%= f.label :password_confirm %>
           </div>
           <div class="col-md-9">
             <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control' %>
@@ -59,7 +60,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :current_password %>:
+            <%= f.label :current_password %>
           </div>
           <div class="col-md-9">
             <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>

@@ -1,3 +1,4 @@
+<% provide(:title, 'Sign in') %>
 <div class="container">
   <div class="box_form">
     <div class="row">
@@ -13,7 +14,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :'Email:' %>
+            <%= f.label :email %>
           </div>
           <div class="col-md-9">            
             <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
@@ -21,7 +22,7 @@
         </div><br>
         <div class="row">
           <div class="col-md-3">
-            <%= f.label :password %>:
+            <%= f.label :password %>
           </div>
           <div class="col-md-9">
             <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
@@ -41,7 +42,7 @@
           <div class="col-lg-6">
             <%= f.submit 'Login', class: 'btn btn-info btn-info-custom' %>
             <div style="text-align: center; margin-top: 10px">
-              <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'link_ct' %><br />
+              <%= link_to 'Forgot your password?', new_password_path(resource_name), class: 'link_ct' %>
             </div>
           </div>
         </div><br>
