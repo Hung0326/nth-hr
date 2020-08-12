@@ -603,9 +603,7 @@ $main-color: #23303D;
     transform: scale(1.2);
     font-weight: 500;
   }
-  // .box-search-tablet {
-  //   display: block;
-  // } 
+
   
 }
 @media only screen and (max-width: 660px) { 
@@ -1352,8 +1350,13 @@ $main-color: #23303D;
 .new_user {
   width: 100%;
 }
+@media only screen and (min-width: 992px) { 
+  .box_form {
+    width: 80% !important;
+  }
+}
 .box_form {
-  width: 80%;
+  width: 100%;
   margin: auto;
   margin-top: 10vh;
   margin-bottom: 35vh;
@@ -1515,6 +1518,6 @@ $main-color: #23303D;
 .link_ct.pdf {
   color: rgb(134, 94, 18);
 }
-#edit_user{
+#edit_user {
   margin: auto;
 }
