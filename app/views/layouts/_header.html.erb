@@ -10,16 +10,25 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <%= link_to 'Yêu thích', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to t('pages.index.favorite'), '#', class: 'link_item_menu_header_right' %>
         </li>
         <li class="list_item_menu_header_right">
-          <%= link_to 'Lịch sử', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_header_right' %>
         </li>
         <li class="list_item_menu_header_right">
-          <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to_if(user_signed_in?, t('pages.index.mypage'), my_page_path, class: 'link_item_menu_header_right') do            
+              link_to t('pages.index.signin'), new_user_session_path, class: 'link_item_menu_header_right' 
+          end %>
         </li>
         <li class="list_item_menu_header_right">
-          <%= link_to 'Đăng ký', '#', class: 'link_item_menu_header_right' %>
+          <%= link_to_if(user_signed_in?, t('pages.index.signout'), destroy_user_session_path, method: :delete, class: 'link_item_menu_header_right') do            
+              link_to t('pages.index.register'), new_user_registration_path, class: 'link_item_menu_header_right' 
+          end %>
+        </li>
+        <li class="list_item_menu_header_right">
+          <span class="link_item_menu_header_right custom"><%= t('pages.index.language') %></span>&nbsp;
+          <%= link_to image_tag('flagvn.png', class: 'header_img_flag'), locale:'vi' %><span style="color: #999;"> | </span>
+          <%= link_to image_tag('flagusa.png', class: 'header_img_flag'), locale:'en' %>
         </li>
       </ul>
     </div>
@@ -30,16 +39,27 @@
         <div class = "menu_mobile_vertical">
           <ul class = "list_menu_mobile_vertical">
             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Yêu thích', '#', class: 'link_item_menu_mobile' %>
+              <%= link_to t('pages.index.favorite'), '#', class: 'link_item_menu_mobile' %>
             </li>
             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Lịch sử', '#', class: 'link_item_menu_mobile' %>
+              <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_mobile' %>
             </li>
-            <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Đăng nhập', '#', class: 'link_item_menu_mobile' %>
+            <li class="item_menu_mobile_vertical">
+              <%= link_to_if(user_signed_in?, t('pages.index.mypage'), my_page_path, class: 'link_item_menu_mobile') do            
+                  link_to t('pages.index.signin'), new_user_session_path, class: 'link_item_menu_mobile' 
+              end %>
             </li>
-             <li class = "item_menu_mobile_vertical">
-              <%= link_to 'Đăng ký', '#', class: 'link_item_menu_mobile' %>
+            <li class="item_menu_mobile_vertical">
+              <%= link_to_if(user_signed_in?, t('pages.index.signout'), destroy_user_session_path, method: :delete, class: 'link_item_menu_mobile') do            
+                  link_to t('pages.index.register'), new_user_registration_path, class: 'link_item_menu_mobile' 
+              end %>
+            </li><hr style="width: 60%; background-color: #999;">
+            <li class="item_menu_mobile_vertical">
+              <span class="link_item_menu_mobile custom"><%= t('pages.index.language') %></span>
+            </li>
+            <li class="item_menu_mobile_vertical">
+              <%= link_to 'Vietnamese', locale:'vi', class: 'link_item_menu_mobile' %><span style="color: #999;"> |</span>
+              <%= link_to 'English', locale:'en', class: 'link_item_menu_mobile' %>
             </li>
           </ul>
         </div>

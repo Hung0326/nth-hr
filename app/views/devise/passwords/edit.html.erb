@@ -1,0 +1,44 @@
+<% provide(:title, 'Update password') %>
+<div class="container">
+  <div class="box_form">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 style="text-align: center"><%= t('devise.title_change_password') %></h2><hr>
+      </div> 
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.hidden_field :reset_password_token %>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <%= render "devise/shared/error_messages", resource: resource %>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :password, t('devise.new_password') %>
+        </div>
+        <div class="col-md-9">            
+          <%= f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'form-control' %>
+          <% if @minimum_password_length %>
+            <em style="font-size: 15px; color: #666">(<%= t('devise.notice_password', minimum_password_length: @minimum_password_length) %>)</em>
+          <% end %>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :password_confirmation, t('devise.confirm_password') %><br />
+        </div>
+        <div class="col-md-9">            
+          <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control' %>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+          <%= f.submit 'Change my password', class: 'btn btn-info btn-info-custom' %>
+        </div>
+      </div><br>
+    <% end %>
+    </div>
+  </div>
+</div>

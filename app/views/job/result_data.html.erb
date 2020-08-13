@@ -1,4 +1,4 @@
-<% provide(:title ,'Kết quả tìm kiếm') %>
+<% provide(:title ,"#{t('pages.detail.br_title')}") %>
 <%= render 'home/banner_and_search' %>  
 <div class="padding_index"></div>
 <div class="container">
@@ -8,10 +8,10 @@
         <span class="breadcrumb-item active">
           <% if @data.total_count > 0 %>
             <div style="word-wrap: break-word;">
-              <span>Có&nbsp;<b><%= @data.total_count %></b>&nbsp;kết quả phù hợp với từ khóa&nbsp;</span><b><%= @keyword %></b>&nbsp;
+              <%= t('pages.result.result_find', job: @data.total_count, key: @keyword).html_safe %>
             </div>
           <% else %>
-            Không có kết quả phù hợp với từ khóa&nbsp;<b><%= @keyword %></b>
+          <%= t('pages.result.no_result_find', key: @keyword).html_safe %>
           <% end %>
         </span>
       </div>
@@ -27,6 +27,7 @@
     </div>
   </div>
 </div>
+<%= render 'job/modal_login' %>
 <%= render partial: 'block_info_job', collection: @data, as: :data %>
 <div class="container">
   <div class="row">

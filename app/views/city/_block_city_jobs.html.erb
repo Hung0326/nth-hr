@@ -5,7 +5,7 @@
         <%= link_to city.name, jobs_path(model: 'city', slug: city.slug), class: 'cityjobs_link' %>
       </div>
       <div class="box_cityjobs_count">
-        <span><%= city.jobs.count %> Công việc</span>
+        <span><%= "#{city.jobs.count} #{t('pages.index.job')}" %></span>
       </div>
     </div>
   </div>

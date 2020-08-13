@@ -1,0 +1,105 @@
+
+vi:
+  title:
+    home: 'Trang chủ'
+  pages:
+    index:
+      favorite: 'Yêu thích'
+      history: 'Lịch sử'
+      signin: 'Đăng nhập'
+      register: 'Đăng ký'
+      mypage: 'Trang cá nhân'
+      signout: 'Đăng xuất'
+      language: 'Ngôn ngữ'
+      lasted_job: 'Năm công việc mới nhất dành cho bạn'
+      top_industries: 'Nhóm nghành đang phổ biến'
+      top_cities: 'Top thành phố'
+      job: 'công việc'
+      more: 'Xem thêm'
+      btn_text_favorite: 'Yêu thích'
+      salary: ' Lương'
+    banner:
+      slogan: 'NỀN TẢNG TUYỂN DỤNG NHÂN SỰ VENJOB'
+      slogan_2: 'Khám phá ngay những việc làm tốt nhất trên VenJob'
+      slogan_3: "Khám phá ngay %{job_count} việc làm tốt nhất trên VenJob"
+      search_placeholder: 'Nhập tiêu đề, công ty, địa điểm...'
+      btn_text_search: 'Tìm việc'
+      all_industries: 'Tất cả nghành nghề'
+      all_locations: 'Tất cả đỉa điểm'
+    confirm:
+      modal_login: 'VUI LÒNG ĐĂNG NHẬP ĐỂ THỰC HIỆN CHỨC NĂNG NÀY'
+    result:
+      result_find: 'Có <b>%{job}</b> kết quả phù hợp với từ khóa <b>%{key}</b>'
+      no_result_find: 'Không có kết quả phù hợp với từ khóa <b>%{key}</b>'
+    detail:
+      br_title: 'Kết quả tìm kiếm'
+      btr_text_submit_cv: 'Nộp CV ngay'
+      work_location: ' Địa điểm làm việc: '
+      posted_at: ' Ngày đăng tin'
+      expiration_date: ' Ngày hết hạn'
+      experience: ' Kinh nghiệm'
+      level: ' Cấp bậc'
+    cities:
+      ask: 'Bạn muốn tìm việc trong hay ngoài nước?'
+      domestic: 'Việt Nam'
+      international: 'Nước ngoài'
+      provinces_vn: 'Các tỉnh, thành phố thuôc Việt Nam'
+    mypage:
+      title: 'Trang cá nhân'
+      email: 'Email'
+      name: 'Họ tên'
+      cv: 'Sơ yếu lý lịch'
+      update: 'Cập nhật'
+      myjob: 'Công việc của tôi'
+      nofile: 'Vui lòng tải lên cv của bạn'
+      you_are_using: 'Bạn đang sử dụng:'
+    errors:
+      back_to_home: 'Cùng mình quay lại trang chủ nhé'
+      error_500_1: 'Có vài lỗi trong đường dẫn này'
+      error_500_2: 'Đừng lo lắng! Xin lỗi bạn vì sự bất tiện trên!'
+      error_404: 'Chúng tôi không tìm thấy trang bạn bạn yêu cầu!'
+  controller:
+    job:
+      detail:
+        home: 'Trang chủ'
+  mailer:
+    register_confirmation:
+      paragraph_1: 'Cảm ơn bạn đã đăng ký dịch vụ của chúng tôi, một email xác nhận với liên kết đăng ký đã được gửi đến email của bạn.'
+      paragraph_2: 'Vui lòng kiểm tra email của bạn trong vòng 24 giờ. Xin lưu ý rằng liên kết đăng ký chỉ có hiệu lực trong 24 giờ.'
+      paragraph_3: 'Sau 24h nếu bạn không xác nhận, bạn sẽ phải đăng ký lại email của mình.'
+    send_register_confirmation:
+      wellcome: 'Chào mừng bạn '
+      paragraph_1: "Bằng cách nhấp vào liên kết sau, bạn đang xác nhận địa chỉ email của mình và đồng ý với Điều khoản dịch vụ của VeNJOB."
+      confirm: 'Xác nhận tài khoản'
+    send_email_changed:
+      hello: 'Xin chào'
+      paragraph: 'Chúng tôi đang liên hệ với bạn để thông báo rằng email của bạn đang được thay đổi thành'
+    send_reset_password_changed:
+      btn_text_change_password: 'Thay đổi mật khẩu của tôi'
+      paragraph_1: 'Ai đó đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể làm điều này thông qua liên kết dưới đây.'
+      paragraph_2: 'Nếu bạn không yêu cầu, vui lòng bỏ qua email này.'
+      paragraph_3: 'Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập vào liên kết ở trên và tạo một mật khẩu mới.'
+    send_password_changed:
+      paragraph: 'Chúng tôi đang liên hệ với bạn để thông báo rằng mật khẩu của bạn đã được thay đổi.'
+  devise:
+    notification: 'THÔNG BÁO'
+    title_signin: 'Đăng nhập'
+    title_register: 'Đăng ký'
+    title_edit_info: 'Cập nhật thông tin tài khoản'
+    title_forget_password: 'Quên mật khẩu?'
+    title_change_password: 'Thay đổi mật khẩu'
+    pass_word: 'Mật khẩu'
+    new_password: 'Mật khẩu mới'
+    confirm_password: 'Xác nhận lại mật khẩu'
+    current_password: 'Mật khẩu hiện tại'
+    notice_blank_password: 'Để trống nếu bạn không muốn thay đổi nó'
+    notice_password: 'Mật khẩu có tối thiểu %{minimum_password_length} ký tự'
+    notice_current_password: 'Chúng tôi cần mật khẩu hiện tại của bạn để xác nhận các thay đổi của bạn'
+    btn_text_send_me_reset_password: 'Gửi cho tôi hướng dẫn đặt lại mật khẩu'
+    btn_text_change_password: 'Thay đổi mật khẩu'
+    back: 'Quay lại'
+    update: 'Cập nhật'
+    cancel_my_acc: 'Xóa tài khoản'
+    remember_me: 'Nhớ mật khẩu'
+    ask_forget_password: 'Bạn quên mật khẩu?'
+  

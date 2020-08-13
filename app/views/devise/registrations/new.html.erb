@@ -1,0 +1,65 @@
+<% provide(:title, "#{t('devise.title_register')}") %>
+<div class="container">
+  <div class="box_form">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 style="text-align: center"><%= t('devise.title_register') %></h2><hr>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <%= render 'devise/shared/error_messages', resource: resource %>
+        </div>
+          <div class="col-md-3">
+            <%= f.label :name, t('pages.mypage.name') %>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :email %>
+          </div>
+          <div class="col-md-9">
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :cv, t('pages.mypage.cv') %>
+          </div>
+          <div class="col-md-9">
+            <%= f.file_field :cv, autofocus: true, class: 'pppp' %>                         
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :password, t('devise.pass_word') %>
+          </div>
+          <div class="col-md-9">
+            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+            <% if @minimum_password_length %>
+            <em style="font-size: 15px;">(<%= t('devise.notice_password',minimum_password_length: @minimum_password_length) %>)</em>
+            <% end %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :password_confirm, t('devise.confirm_password') %>
+          </div>
+          <div class="col-md-9">
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control' %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-md-8"></div>
+          <div class="col-md-4">
+            <%= f.submit t('devise.title_register'), class: 'btn btn-info btn-info-custom' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

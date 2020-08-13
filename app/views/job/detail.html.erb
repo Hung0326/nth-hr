@@ -24,13 +24,13 @@
     </div>
     <div class="col-lg-3">
       <div class="btn_apply_job">
-        <%= link_to 'Nộp CV ngay', '#', class: 'btn btn-apply_job' %>
+        <%= link_to t('pages.detail.btr_text_submit_cv'), '#', class: 'btn btn-apply_job' %>
       </div>
     </div>
     <div class="col-lg-12 col-md-12">
       <div class="box_detail_jobs">
         <div class="box_detail_jobs_location">
-          <span><i class="fas fa-map-marker-alt"></i> Địa điểm làm việc: </span>
+          <span><i class="fas fa-map-marker-alt"></i><%= t('pages.detail.work_location') %></span>
           <% @job.cities.each do |x| %>
             <%= link_to "&nbsp;#{x.name}&nbsp;".html_safe , jobs_path(model: 'city', slug: x.slug), class: 'link_ct apply_job link_optimize'%>
           <% end %>        
@@ -40,27 +40,27 @@
           <div class="row">
             <div class="col-lg-4 col-md-6">
               <div class="detail_info">
-                <span><i class="fab fa-linode"></i> Lương: <%= @job.salary %></span>
+                <span><i class="fab fa-linode"></i> <%= "#{t('pages.index.salary')}: #{@job.salary}" %></span>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="detail_info">
-                <span><i class="fab fa-linode"></i> Ngày đăng tin: <%= @job.posted_at %></span>
+                <span><i class="fab fa-linode"></i> <%= "#{t('pages.detail.posted_at')}: #{@job.posted_at}" %></span>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="detail_info">
-                <span><i class="fab fa-linode"></i> Ngày hết hạn: <%= @job.expiration_date.present? ? @job.expired_at : 'đang cập nhật' %></span>
+                <span><i class="fab fa-linode"></i> <%= "#{t('pages.detail.expiration_date')}: #{@job.expiration_date.present? ? @job.expired_at : 'đang cập nhật'}" %></span>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="detail_info">
-                <span><i class="fab fa-linode"></i> Kinh nghiệm: <%= @job.experience %></span>
+                <span><i class="fab fa-linode"></i> <%= "#{t('pages.detail.experience')}: #{@job.experience}" %></span>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="detail_info">
-                <span><i class="fab fa-linode"></i> Cấp bậc: <%= @job.level %></span>
+                <span><i class="fab fa-linode"></i> <%= "#{t('pages.detail.level')}: #{@job.level}" %></span>
               </div>
             </div>
           </div>
@@ -80,12 +80,12 @@
   <div class="row">
     <div class="col-lg-6 col-md-6">
       <div class="btn_apply_job">
-        <%= link_to 'Nộp CV ngay', '#', class: 'btn btn-apply_job' %>
+        <%= link_to t('pages.detail.btr_text_submit_cv'), '#', class: 'btn btn-apply_job' %>
       </div>
     </div>
     <div class="col-lg-6 col-md-6">
       <div class="btn_apply_job">
-        <%= link_to 'Yêu thích', '#', class: 'btn btn-apply_job_favorite' %>
+        <%= link_to t('pages.index.btn_text_favorite'), '#', class: 'btn btn-apply_job_favorite' %>
       </div>
     </div>
   </div>

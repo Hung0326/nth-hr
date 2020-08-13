@@ -1,7 +1,7 @@
 <div class="container">
   <div class="border_box_cities">
     <div class="box_text_five_jobs box_padding_city">
-      <span>Top thành phố</span>
+      <span><%= t('pages.index.top_cities') %></span>
     </div>
     <div class="row no-gutters">
       <% @top_cities.each do |city| %>
@@ -12,7 +12,7 @@
               <%= link_to city.name, jobs_path(model: 'city', slug: city.slug),class: 'link_ct' %>
             </div>
             <div class="ct_jobs_count">
-              <%= link_to "#{city.jobs.count} công việc", jobs_path(model: 'city', slug: city.slug),class: 'link_ct' %>
+              <%= link_to "#{city.jobs.count} #{t('pages.index.job')}", jobs_path(model: 'city', slug: city.slug),class: 'link_ct' %>
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
       <div class="col-lg-12">
         <div class="box_info_city">
           <div class="ct_name">
-            <%= link_to 'Xem Thêm', city_index_path, class: 'link_ct' %>
+            <%= link_to t('pages.index.more'), city_index_path, class: 'link_ct' %>
           </div>
           <div class="ct_jobs_count">
             <i class="fas fa-ellipsis-h"></i>
