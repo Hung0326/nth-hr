@@ -117,6 +117,16 @@ $main-color: #23303D;
   }
 }
 
+.link_item_menu_header_right.custom:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header_img_flag {
+  width: 25px;
+  height: 15px;
+}
+
 .menu__mobile {
   position: absolute;  
   height: 100vh;  
@@ -163,15 +173,19 @@ $main-color: #23303D;
 }
 
 .link_item_menu_mobile {
-  
   font-size: 17px;
   color: white;
   &:hover {
     text-decoration: none;
     color: #999;
-    
   }
 }
+
+.link_item_menu_mobile.custom:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
 .padding_header_to_body {
   padding-top: 52px;
 }

@@ -1,7 +1,7 @@
 <div class="overlay_login">
   <div class="modal_login">
     <div class="modal_login_header">
-      <span>VUI LÒNG ĐĂNG NHẬP ĐỂ THỰC HIỆN CHỨC NĂNG NÀY</span>
+      <span><%= t('devise.notification') %></span>      
       <span class="icon_close_modal_login">
         <i class="fas fa-times"></i>
       </span>
@@ -10,7 +10,8 @@
       <div class="row">
         <div class="col-lg 12">
           <div class="modal_login_notice_text">
-            <span>ĐĂNG NHẬP</span>
+            <span><%= t('pages.confirm.modal_login').downcase.capitalize %></span><br>
+            <span><b><%= link_to t('devise.title_signin'), new_user_session_path, class: 'link_ct' %></b></span>
           </div>
         </div>
       </div>

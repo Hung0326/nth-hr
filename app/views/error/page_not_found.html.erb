@@ -8,12 +8,12 @@
     </div><br>
     <div class="col-lg-12">
       <div class="box_content_404_text">
-        <span>Chúng tôi không tìm thấy trang bạn bạn yêu cầu!</span>
+        <span><%= t('pages.errors.error_404') %></span>
       </div>
     </div>
     <div class="col-lg-12">
       <div class="box_content_404_back_to_home">
-        <%= link_to 'Cùng mình quay lại trang chủ nhé', root_path %>
+        <%= link_to t('pages.errors.back_to_home'), root_path %>
       </div>
     </div>
   </div>

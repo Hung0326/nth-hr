@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= "#{t('mailer.send_register_confirmation.wellcome')} #{@email}!" %></p>
 
-<p>By clicking on the following link, you are confirming your email address and agreeing to VeNJOB's Terms of Service.</p>
+<p><%= "#{t('mailer.send_register_confirmation.paragraph_1')}" %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to t('mailer.send_register_confirmation.confirm'), confirmation_url(@resource, confirmation_token: @token) %></p>

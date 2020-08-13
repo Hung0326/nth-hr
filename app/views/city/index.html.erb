@@ -1,4 +1,4 @@
-<% provide(:title, 'Top thành phố') %>
+<% provide(:title, "#{t('pages.index.top_cities')}") %>
 <%= render 'shared/scroll_top' %>
 <div class="container">
   <div class="box_option_location">
@@ -10,14 +10,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="box_option_location_header">
-          <span>Bạn muốn tìm việc trong hay ngoài nước?</span>
+          <span><%= t('pages.cities.ask') %></span>
         </div>
       </div>
       <div class="col-lg-6">
-        <button class="btn_option_location btn_option_location-vn">Việt Nam</button>
+        <button class="btn_option_location btn_option_location-vn"><%= t('pages.cities.domestic') %></button>
       </div>
       <div class="col-lg-6">
-        <button class="btn_option_location btn_option_location-qt">Nước ngoài</button>
+        <button class="btn_option_location btn_option_location-qt"><%= t('pages.cities.international') %></button>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="title_list_city title_list_city_vn">
-        <span>Các tỉnh, thành phố thuôc Việt Nam</span>
+        <span><%= t('pages.cities.provinces_vn') %></span>
       </div>
     </div>
     <div class="container">
@@ -37,7 +37,7 @@
     </div>
     <div class="col-lg-12">
       <div class="title_list_city title_list_city_qt">
-        <span>Quốc tế</span>
+        <span><%= t('pages.cities.international') %></span>
       </div>
     </div>
     <div class="container">

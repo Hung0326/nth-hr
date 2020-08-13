@@ -1,33 +1,104 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title:
+    home: 'Home'
+  pages:
+    index:
+      favorite: 'Favorite'
+      history: 'History'
+      signin: 'Sign in'
+      register: 'Register'
+      mypage: 'My page'#{t('pages.index.job')}
+      signout: 'Sign out'
+      language: 'Language'
+      lasted_job: 'Five new job for you'
+      top_industries: 'Top Industries'
+      top_cities: 'Top Cities'
+      job: 'jobs'
+      more: 'More'
+      btn_text_favorite: 'Favorite'
+      salary: ' Salary'
+    banner:
+      slogan: 'VENJOB HUMAN RESOURCE PLATFORM'
+      slogan_2: 'Instantly discover the best jobs on VenJob'
+      slogan_3: 'Instantly discover %{job_count} the best jobs on VenJob'
+      search_placeholder: 'Input title, companies, locations...'
+      btn_text_search: 'Find Job'
+      all_industries: 'All industries'
+      all_locations: 'All locations'
+    confirm:
+      modal_login: 'PLEASE SIGN IN TO EXECUTE THIS FUNCTION'
+    result:
+      result_find: 'There are <b>%{job}</b> results matching keyword <b>%{key}</b>'
+      no_result_find: 'No results match the keyword <b>%{key}</b>'
+    detail:
+      br_title: 'Result'
+      btr_text_submit_cv: 'Apply Now'
+      work_location: ' Work locations: '
+      posted_at: ' Posted at'
+      expiration_date: ' Expiration date'
+      experience: ' Experience'
+      level: ' Level'
+    cities:
+      ask: 'Do you want to find a job at Viet Nam or oversea?'
+      domestic: 'Viet Nam'
+      international: 'International'
+      provinces_vn: 'Provinces and cities of Vietnam'
+    mypage:
+      title: 'My page'
+      email: 'Email'
+      name: 'Name'
+      cv: 'Curriculum Vitae'
+      update: 'Update'
+      myjob: 'My jobs'
+      nofile: 'Please upload your cv'
+      you_are_using: "You're using:"
+    errors:
+      back_to_home: "Let's go back to the homepage"
+      error_500_1: 'There are some errors in this path'
+      error_500_2: 'Do not worry! Sorry for the inconvenience!'
+      error_404: 'We cannot find the page you requested!'
+  controller:
+    job:
+      detail:
+        home: 'Home'
+  mailer:
+    register_confirmation:
+      paragraph_1: 'Thank you for register our service, an confirmation email with registration link has been sent to your email'
+      paragraph_2: 'Please check your email within 24 hours. Please note that the registration link is only valid for 24 hours'
+      paragraph_3: 'Over that period, you will have to register your emai again.'
+    send_register_confirmation:
+      wellcome: 'Welcome'
+      paragraph_1: "By clicking on the following link, you are confirming your email address and agreeing to VeNJOB's Terms of Service."
+      confirm: 'Confirm my account'
+    send_email_changed:
+      hello: 'Hello'
+      paragraph: "We're contacting you to notify you that your email is being changed to"
+    send_reset_password_changed:
+      btn_text_change_password: 'Change my password'
+      paragraph_1: 'Someone has requested a link to change your password. You can do this through the link below.'
+      paragraph_2: "If you didn't request this, please ignore this email."
+      paragraph_3: "Your password won't change until you access the link above and create a new one."
+    send_password_changed:
+      paragraph: "We're contacting you to notify you that your password has been changed."
+  devise:
+    notification: 'NOTIFICATION'
+    title_signin: 'Sign in'
+    title_register: 'Register'
+    title_edit_info: 'Edit my info'
+    title_forget_password: 'Forgot your password?'
+    title_change_password: 'Change your password'
+    pass_word: 'Password'
+    new_password: 'New password'
+    confirm_password: 'Confirm new password'
+    current_password: 'Current password'
+    notice_blank_password: "Leave blank if you don't want to change it "
+    notice_password: 'Password have a minimum of %{minimum_password_length} characters'
+    notice_current_password: 'We need your current password to confirm your changes'
+    btn_text_send_me_reset_password: 'Send me reset password instructions'
+    btn_text_change_password: 'Change my password'
+    back: 'Back'
+    update: 'Update'
+    cancel_my_acc: 'Cancel my account'
+    remember_me: 'Remember Me'
+    ask_forget_password: 'Forgot your password?'
