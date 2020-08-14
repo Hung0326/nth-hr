@@ -44,6 +44,13 @@ en:
       domestic: 'Viet Nam'
       international: 'International'
       provinces_vn: 'Provinces and cities of Vietnam'
+    apply:
+      ribon_1: 'Enter your information'
+      ribon_2: 'Confirmation'
+      ribon_3: 'Done'
+      title_input_1: 'Fill in your contact information and choose a profile to apply for:'
+      title_input_2: 'Your contact information:'
+      btn_text_confirm: 'Confirm'
     mypage:
       title: 'My page'
       email: 'Email'

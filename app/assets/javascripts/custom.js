@@ -34,5 +34,8 @@ $(document).on("turbolinks:load", function(){
     console.log('bam')
     body.stop().animate({ scrollTop: $('.title_list_city_qt').offset().top}, 700, 'swing');        
   });
-
+  // change lable
+  $("input[type=file]").on('change',function(){
+    document.getElementById ("label_name_file").innerHTML = this.files[0].name;
+  });
 });

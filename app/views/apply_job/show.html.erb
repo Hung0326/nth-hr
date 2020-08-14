@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="box_job_apply">
+    <div class="ribbon">
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+          <div class="ribbon_item active">
+            <span class="custom_badges active">1</span> Nhập thông tin
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <div class="ribbon_item active">
+            <span class="custom_badges active">2</span> Xác nhận thông tin
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <div class="ribbon_item">
+            <span class="custom_badges">3</span> Hoàn thành
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="form_apply_job">
+      <span class="span_second">Vui lòng xác nhận lại thông tin của bạn</span>
+      <br><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-2">
+            Họ và tên:
+          </div>
+          <div class="col-lg-6">
+            <%= session[:user_name] %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-2">
+            Email:
+          </div>
+          <div class="col-lg-6">
+            <%= session[:user_email] %>
+          </div>
+        </div>
+      </div>
+      
+    <%= link_to 'save', save_path %>
+    <%= link_to 'back', edit_path(job_id: session[:job_id]) %>
+    </div>
+  </div>
+</div>

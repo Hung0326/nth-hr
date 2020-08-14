@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get 'register/:code', to: 'users#confirm_sign_up', as: :confirm_sign_up
     get 'industries', to: 'industry#index', as: :industry_index
     get 'cities', to: 'city#index', as: :city_index
+    get 'apply', to: 'apply_job#apply', as: :apply
+    post 'confrim', to: 'apply_job#confirmation', as: :confirm
+    get 'confrim', to: 'apply_job#show', as: :show
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

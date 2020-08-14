@@ -44,6 +44,13 @@ vi:
       domestic: 'Việt Nam'
       international: 'Nước ngoài'
       provinces_vn: 'Các tỉnh, thành phố thuôc Việt Nam'
+    apply:
+      ribon_1: 'Nhập thông tin'
+      ribon_2: 'Xác nhận thông tin'
+      ribon_3: 'Hoàn thành'
+      title_input_1: 'Điền thông tin liên hệ của bạn và chọn hồ sơ để ứng tuyển:'
+      title_input_2: 'Thông tin liên hệ của bạn:'
+      btn_text_confirm: 'Xác nhận'
     mypage:
       title: 'Trang cá nhân'
       email: 'Email'

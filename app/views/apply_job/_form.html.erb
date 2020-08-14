@@ -1,0 +1,44 @@
+<%= form_with(model: data_apply, url: confirm_path) do |f| %>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
+        <%= f.label :name, t('pages.mypage.name') %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.text_field(:name, class:'form-control') %>        
+        <%= f.hidden_field(:job_id, value: session[:job_id]) %>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
+        <%= f.label :email%>
+      </div>
+      <div class="col-lg-6">
+        <%= f.text_field(:email, class:'form-control') %>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2">
+        <span><%= t('pages.mypage.cv') %></span>
+      </div>
+      <div class="col-lg-5 col-md-12">
+        <%= f.label :cv, current_user.cv.identifier ? 'current_user.cv.identifier' : t('pages.mypage.nofile'), id: 'label_name_file' %>
+        <%= f.file_field :cv, class: 'pppp hidden' %>  
+      </div>
+      <div class="col-lg-1">
+        <%= f.label :cv, '<i class="fas fa-cloud-upload-alt"></i>'.html_safe, title: 'upload', class: 'lable_custom' %>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-lg-6"></div>
+      <div class="col-lg-4">
+        <%= f.submit t('pages.apply.btn_text_confirm'), class:'btn btn-success btn-info-custom' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<hr>

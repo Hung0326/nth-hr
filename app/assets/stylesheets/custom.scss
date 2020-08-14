@@ -1417,6 +1417,14 @@ $main-color: #23303D;
 .pppp {
   width: 100% !important;
 }
+.pppp.hidden {
+  display: none;
+}
+.lable_custom {
+  cursor: pointer;
+  font-size: 20px;
+  color: green;
+}
 .list_email_app {
 
   ul {

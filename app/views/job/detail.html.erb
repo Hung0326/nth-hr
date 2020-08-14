@@ -24,7 +24,7 @@
     </div>
     <div class="col-lg-3">
       <div class="btn_apply_job">
-        <%= link_to t('pages.detail.btr_text_submit_cv'), '#', class: 'btn btn-apply_job' %>
+        <%= link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job' %>
       </div>
     </div>
     <div class="col-lg-12 col-md-12">
