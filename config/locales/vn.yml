@@ -1,5 +1,11 @@
 
 vi:
+  errors:
+    messages:
+      max_size_error: 'Kích thước tệp phải nhỏ hơn 5 MB'
+      carrierwave_download_error: "Couldn't download image."
+      extension_whitelist_error: "Bạn không được phép tải lên tệp %{extension}, loại tệp được phép: %{allowed_types}"
+      extension_blacklist_error: "Bạn không được phép tải lên tệp %{extension}, loại tệp bị cấm: %{prohibited_types}"
   title:
     home: 'Trang chủ'
   pages:

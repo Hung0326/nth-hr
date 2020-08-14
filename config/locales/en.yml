@@ -1,5 +1,11 @@
 
 en:
+  errors:
+    messages:
+      max_size_error: 'File size should be less than 5 MB'
+      carrierwave_download_error: "Couldn't download CV."
+      extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+      extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
   title:
     home: 'Home'
   pages:

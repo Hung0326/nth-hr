@@ -617,8 +617,10 @@ $main-color: #23303D;
     transform: scale(1.2);
     font-weight: 500;
   }
-
-  
+  .content_menu_mobile {
+    height: 180vh;
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 660px) { 
   .slogan_text {
@@ -1418,24 +1420,25 @@ $main-color: #23303D;
   width: 100% !important;
 }
 .list_email_app {
-
+  
   ul {
     list-style: none;
     display: flex;
+    padding-left: 0px;
   }
   li {
-    margin: 5px 15px;
-    &:nth-child(2) {
+    margin: 5px 20px 5px 0px;
+    &:nth-child(1) {
       a {
         color: red;
       }
     }
-    &:nth-child(3) {
+    &:nth-child(2) {
       a {
         color: rgb(101, 73, 226);
       }
     }
-    &:nth-child(4) {
+    &:nth-child(3) {
       a {
         color: rgb(25, 110, 238);
       }
