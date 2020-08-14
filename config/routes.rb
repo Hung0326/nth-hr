@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get 'industries', to: 'industry#index', as: :industry_index
     get 'cities', to: 'city#index', as: :city_index
     get 'apply', to: 'apply_job#apply', as: :apply
-    post 'confrim', to: 'apply_job#confirmation', as: :confirm
-    get 'confrim', to: 'apply_job#show', as: :show
+    post 'confirm', to: 'apply_job#confirm', as: :confirm
+    get 'save', to: 'apply_job#save', as: :save
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

@@ -2,28 +2,38 @@
 
 class ApplyJobController < ApplicationController
   before_action :authenticate_user!, only: :apply
-  def apply    
-    @data_apply = AppliedJob.new
+
+  def apply
+    redirect_to root_path if params[:job_id].blank?
+    @data_apply = AppliedJob.new    
     session[:job_id] = params[:job_id]
   end
 
-  def confirmation    
-    @data_apply = AppliedJob.new(applied_job_params)
-    if @data_apply.save
-      session[:user_name] = @data_apply.name
-      session[:user_email] = @data_apply.email
-      redirect_to show_path
-    else
-      flash[:error] = 'error'
-      render 'apply'
+  def catch_data(applied_job_params)
+    @apply_job = AppliedJob.new(applied_job_params)
+    if @apply_job.cv.blank?
+      if current_user.cv.present?
+        @apply_job.cv = current_user.cv
+        render :confirm
+      else
+        flash[:error] = t('pages.mypage.nofile')
+        redirect_to apply_path(job_id: session[:job_id])
+        session.delete(:job_id)
+      end
     end
+    @apply_job
+  end
+
+  def confirm
+    @apply_job ||= catch_data(applied_job_params)
   end
 
   def show
   end
 
   def save    
-    @data_apply.save
+    debugger
+    confirm.save
   end
 
   private

@@ -38,4 +38,12 @@ $(document).on("turbolinks:load", function(){
   $("input[type=file]").on('change',function(){
     document.getElementById ("label_name_file").innerHTML = this.files[0].name;
   });
+
+});
+$(document).on("turbolinks:click", function(){
+  $(".box_loading").show();
+});
+
+$(document).on("turbolinks:load", function(){
+  $(".box_loading").hide();
 });

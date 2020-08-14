@@ -15,3 +15,6 @@
 //= require turbolinks
 //= require jquery.min
 //= require_tree .
+toastr.options = {
+  'closeButton': true
+}

@@ -2,19 +2,19 @@
   <div class="box_job_apply">
     <div class="ribbon">
       <div class="row">
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-4 col-md-12">
           <div class="ribbon_item active">
-            <span class="custom_badges active">1</span> Nhập thông tin
+            <span class="custom_badges active">1</span> <%= t('pages.apply.ribon_1') %>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-4 col-md-12">
           <div class="ribbon_item active">
-            <span class="custom_badges active">2</span> Xác nhận thông tin
+            <span class="custom_badges active">2</span> <%= t('pages.apply.ribon_2') %>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-4 col-md-12">
           <div class="ribbon_item">
-            <span class="custom_badges">3</span> Hoàn thành
+            <span class="custom_badges">3</span> <%= t('pages.apply.ribon_3') %>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
             Họ và tên:
           </div>
           <div class="col-lg-6">
-            <%= session[:user_name] %>
+            <%= @apply_job.name %>
           </div>
         </div><br>
         <div class="row">
@@ -39,13 +39,22 @@
             Email:
           </div>
           <div class="col-lg-6">
-            <%= session[:user_email] %>
+            <%= @apply_job.email %>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-2">
+            CV:
+          </div>
+          <div class="col-lg-6">
+            <%= @apply_job.cv.identifier %>
           </div>
         </div>
       </div>
-      
-    <%= link_to 'save', save_path %>
-    <%= link_to 'back', edit_path(job_id: session[:job_id]) %>
+    
+      <%= link_to 'save', save_path %>
+      <%= link_to t('devise.back'), :back %>
     </div>
   </div>
 </div>

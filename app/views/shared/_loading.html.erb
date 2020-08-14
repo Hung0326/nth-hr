@@ -1,0 +1,46 @@
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  .box_loading {
+    z-index: 9999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    background-image:
+    linear-gradient(to bottom, rgba(112, 112, 112, 0.486), rgba(112, 112, 112, 0.486));
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 8px solid #f3f3f3c0;
+    
+    border-left: 8px solid rgb(247, 127, 29);
+    border-right: 8px solid rgb(247, 127, 29);
+    
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<div class="box_loading">
+  <div class="content"></div>
+</div>
