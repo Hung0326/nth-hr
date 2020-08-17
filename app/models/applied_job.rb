@@ -6,6 +6,6 @@ class AppliedJob < ApplicationRecord
   belongs_to :user
   belongs_to :job
   validates :name, :email, :cv, presence: true
-  validates :name, :email, length: {in: 8..200}
+  validates :name, :email, length: { in: 4..200 }
   validates :email, format: Devise.email_regexp
 end

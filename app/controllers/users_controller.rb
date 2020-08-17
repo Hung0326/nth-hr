@@ -9,4 +9,15 @@ class UsersController < ApplicationController
 
   def my_page
   end
+
+  def set_lang 
+    if user_signed_in?     
+      if params[:lang] == 'vi' || params[:lang] == 'en'       
+        User.update(current_user.id, language: params[:lang]) 
+        redirect_to '/' 
+      else 
+        redirect_to '/' 
+      end   
+    end
+  end
 end

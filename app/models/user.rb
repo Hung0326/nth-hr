@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
   has_many :histories
   has_many :favorites
-  validates_length_of :name, within: 8..200
+  validates_length_of :name, within: 4..200
   validates_length_of :email, within: 8..200
 end

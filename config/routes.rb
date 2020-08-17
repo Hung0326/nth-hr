@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'setting', to: 'users#set_lang', as: :set_lang
   scope '(:locale)', locale: /en|vi/ do
     devise_for :users, controllers: {registrations: 'registrations'}
     
@@ -9,9 +10,11 @@ Rails.application.routes.draw do
     get 'register/:code', to: 'users#confirm_sign_up', as: :confirm_sign_up
     get 'industries', to: 'industry#index', as: :industry_index
     get 'cities', to: 'city#index', as: :city_index
+    # Applied job
     get 'apply', to: 'apply_job#apply', as: :apply
     post 'confirm', to: 'apply_job#confirm', as: :confirm
-    get 'save', to: 'apply_job#save', as: :save
+    post 'done', to: 'apply_job#done', as: :done
+    get 'my/jobs', to: 'apply_job#index', as: :list_applied_jobs
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

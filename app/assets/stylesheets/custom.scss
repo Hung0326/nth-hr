@@ -75,8 +75,7 @@ $main-color: #23303D;
   display: flex;
 }
 .list_item_menu_header_right {
-  margin: 0 10px;
-  
+  margin: 0 10px;  
   &:first-child {
     margin-right: 4px;
     position: relative;
@@ -1147,6 +1146,16 @@ $main-color: #23303D;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   }
 }
+.btn-apply_job.inactive {
+  background-color: #283969;
+  font-weight: bold;
+  background-image: none;
+  color: white;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .btn-apply_job_favorite {
   margin-top: 20px;
   width: 100%;
@@ -1542,4 +1551,56 @@ $main-color: #23303D;
 }
 #edit_user {
   margin: auto;
+}
+
+.list_item_menu_header_right.have_menu {
+  position: relative;
+  &:hover .menu_hover {
+    display: block;
+    transition: 0.5s linear;
+  }
+}
+.menu_hover {
+  position: absolute;
+  z-index: 9000000;
+  top: 100%;
+  display: none;
+  left: -100%;
+  width: 150px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 1px -1px 5px 2px rgba($color: #000000, $alpha: 0.2);
+  transition: 0.5s linear;
+  &::before {
+    cursor: pointer;
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 28px;
+    background-color: transparent;
+    top: -22px;
+    left: 0;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-top: 14px solid transparent;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 14px solid #fff;
+    top: -35%;
+    left: 50%;
+  }
+  ul {
+    list-style: none;
+    padding: 10px 15px;
+    li {
+      &:last-child {
+        margin-top: 5px;
+      }
+    }
+  }
 }

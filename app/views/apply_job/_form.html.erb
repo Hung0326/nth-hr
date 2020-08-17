@@ -1,4 +1,4 @@
-<%= form_with(model: data_apply, url: confirm_path, local: true) do |f| %>
+<%= form_with(model: data_apply, url: confirm_path, html: { multipart: true }, local: true) do |f| %>
   <br>
   <div class="container">
     <div class="row">
@@ -7,9 +7,8 @@
         <%= f.label :name, t('pages.mypage.name') %>
       </div>
       <div class="col-lg-6">
-        <%= f.text_field(:name, autofocus: true, autocomplete: 'name', class:'form-control') %>        
         <%= f.hidden_field(:job_id, value: params[:job_id]) %>
-        <%= f.hidden_field(:user_id, value: current_user.id) %>
+        <%= f.text_field(:name, autofocus: true, autocomplete: 'name', class:'form-control') %>        
       </div>
     </div><br>
     <div class="row">
@@ -28,7 +27,7 @@
       </div>
       <div class="col-lg-5 col-md-12">
         <%= f.label :cv, current_user.cv.identifier ? current_user.cv.identifier : t('pages.mypage.nofile'), id: 'label_name_file' %>
-        <%= f.file_field :cv, accept: '.pdf', class: 'pppp hidden' %>  
+        <%= f.file_field :cv, accept: '.pdf, .zip', class: 'pppp hidden' %>  
       </div>
       <div class="col-lg-1">
         <%= f.label :cv, '<i class="fas fa-cloud-upload-alt"></i>'.html_safe, title: 'upload', class: 'lable_custom' %>

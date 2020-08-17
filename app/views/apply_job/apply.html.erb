@@ -2,8 +2,8 @@
   <div class="box_job_apply">
   <%= render 'ribbon' %>
     <div class="form_apply_job">
-      <span class="span_second"><%= t('pages.apply.title_input_1') %></span>
-      <br><br>
+      <span style="font-size:20px"> <%= t('apply_job.job')%>: </span><span style="font-size: 26px; color: red; font-weight:bold;"><%= @job.name %></span><br><br>
+      <span class="span_second"><%= t('pages.apply.title_input_1') %></span><br>
       <span><%= t('pages.apply.title_input_2') %></span>
       <%= render 'form', data_apply: @data_apply  %>
     </div>

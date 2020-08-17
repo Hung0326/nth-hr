@@ -3,12 +3,18 @@
 # Application controller
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  # before_action :debug
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
 
+  # def debug
+  #   puts "ab"  
+  #   byebug
+  #   puts "adcsdcds"
+  # end
   def set_locale
-    locale = params[:locale].to_s.strip.to_sym
+    user_signed_in? ? locale = current_user.language.to_sym : locale = params[:locale].to_s.strip.to_sym
     I18n.locale = I18n.available_locales.include?(locale) ? locale : I18n.default_locale
   end
 
