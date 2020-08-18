@@ -24,8 +24,8 @@ class ApplyJobController < ApplicationController
       @apply_job.errors.full_messages.each { |mess| errors << "#{mess}<br>" }
       flash[:error] = errors.join('<br>').html_safe
       redirect_to apply_path(job_id: session[:job_id])
-      session.delete(:job_id)
     end
+    session.delete(:job_id)
   end
 
   def done
