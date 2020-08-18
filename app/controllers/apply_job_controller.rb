@@ -5,11 +5,11 @@ class ApplyJobController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @jobs = current_user.applied_jobs.order(created_at: :desc).page(params[:page])
+    @jobs = current_user.applied_jobs.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def apply
-    redirect_to root_path if params[:job_id].blank?
+    return redirect_to root_path if params[:job_id].blank?
     @data_apply = current_user.applied_jobs.new(name: current_user.name, email: current_user.email)
     session[:job_id] = params[:job_id]
     @job = Job.find(params[:job_id])
