@@ -5,7 +5,7 @@ class ApplyJobController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @jobs = current_user.applied_jobs.order(created_at: :desc).page(params[:page]).per(6)
+    @jobs = current_user.applied_jobs.includes(:job).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def apply
