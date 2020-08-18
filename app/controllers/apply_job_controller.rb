@@ -2,7 +2,7 @@
 
 # Applied jobs controller
 class ApplyJobController < ApplicationController
-  before_action :authenticate_user!, only: :apply
+  before_action :authenticate_user!
 
   def index
     @jobs = current_user.applied_jobs.page(params[:page])
@@ -18,7 +18,7 @@ class ApplyJobController < ApplicationController
   def confirm
     @apply_job = current_user.applied_jobs.new(applied_job_params)
     @apply_job.cv = current_user.cv if @apply_job.cv.blank?
-    session[:cv_full_path] = @apply_job.cv.path
+    session[:cache_name] = @apply_job.cv.cache_name
     if @apply_job.invalid?
       errors = []
       @apply_job.errors.full_messages.each { |mess| errors << "#{mess}<br>" }
@@ -30,7 +30,7 @@ class ApplyJobController < ApplicationController
 
   def done
     data_apply = current_user.applied_jobs.new(applied_job_params)
-    data_apply.cv = File.new(session[:cv_full_path])
+    data_apply.cv.retrieve_from_cache!(session[:cache_name])
     if data_apply.save
       AppliedMailer.applied_job_mail_to(current_user.applied_jobs.last).deliver_now
       render :done
@@ -38,7 +38,7 @@ class ApplyJobController < ApplicationController
       flash[:error] = t('apply_job.error')
       redirect_to apply_path(job_id: applied_job_params[:job_id])
     end
-    session.delete(:cv_full_path)
+    session.delete(:cache_name)
   end
 
   private

@@ -123,6 +123,7 @@ vi:
     confirm: 'Vui lòng xác nhận lại thông tin của bạn'
     applied: 'Đã ứng tuyển'
     title: 'Danh sách công việc đã ứng tuyển'
+    no_record: 'Bạn chưa ứng tuyển công việc nào hết.'
     already_taken: 'Chúng tôi đã tiếp nhận hồ sơ của bạn, nhà tuyển dụng sẽ liên hệ đến bạn trong thời gian sớm nhất.'
   activerecord:
     attributes:

@@ -123,6 +123,7 @@ en:
     confirm: 'Please confirm your information'
     applied: 'Applied'
     title: 'List Applied Jobs'
+    no_record: "You haven't applied yet."
     already_taken: 'We have received your resume, the employer will contact you as soon as possible.'
   activerecord:
     attributes:
