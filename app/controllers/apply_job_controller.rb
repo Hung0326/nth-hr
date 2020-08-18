@@ -5,7 +5,7 @@ class ApplyJobController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @jobs = current_user.applied_jobs.page(params[:page])
+    @jobs = current_user.applied_jobs.order(created_at: :desc).page(params[:page])
   end
 
   def apply
@@ -17,6 +17,7 @@ class ApplyJobController < ApplicationController
 
   def confirm
     @apply_job = current_user.applied_jobs.new(applied_job_params)
+    @apply_job.job_id = session[:job_id]
     @apply_job.cv = current_user.cv if @apply_job.cv.blank?
     session[:cache_name] = @apply_job.cv.cache_name
     if @apply_job.invalid?
@@ -25,25 +26,26 @@ class ApplyJobController < ApplicationController
       flash[:error] = errors.join('<br>').html_safe
       redirect_to apply_path(job_id: session[:job_id])
     end
-    session.delete(:job_id)
   end
 
   def done
-    data_apply = current_user.applied_jobs.new(applied_job_params)
-    data_apply.cv.retrieve_from_cache!(session[:cache_name])
-    if data_apply.save
-      AppliedMailer.applied_job_mail_to(current_user.applied_jobs.last).deliver_now
+    apply_data = current_user.applied_jobs.new(applied_job_params)
+    apply_data.job_id = session[:job_id]
+    apply_data.cv.retrieve_from_cache!(session[:cache_name])
+    if apply_data.save
+      AppliedMailer.applied_job_mail_to(apply_data).deliver_now
       render :done
     else
       flash[:error] = t('apply_job.error')
       redirect_to apply_path(job_id: applied_job_params[:job_id])
     end
+    session.delete(:job_id)
     session.delete(:cache_name)
   end
 
   private
 
   def applied_job_params
-    params.require(:applied_job).permit(:job_id, :name, :email, :cv)
+    params.require(:applied_job).permit(:name, :email, :cv)
   end
 end

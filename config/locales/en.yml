@@ -21,6 +21,7 @@ en:
       vi: 'Vietnamese' 
       en: 'English'
       setting: 'Settings'
+      applied_at: 'Applied_at'
     banner:
       slogan: 'VENJOB HUMAN RESOURCE PLATFORM'
       slogan_2: 'Instantly discover the best jobs on VenJob'

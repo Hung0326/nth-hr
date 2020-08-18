@@ -21,6 +21,7 @@ vi:
       vi: 'Tiếng Việt' 
       en: 'Tiếng Anh'
       setting: 'Cài đặt'
+      applied_at: 'Ứng tuyển lúc: '
     banner:
       slogan: 'NỀN TẢNG TUYỂN DỤNG NHÂN SỰ VENJOB'
       slogan_2: 'Khám phá ngay những việc làm tốt nhất trên VenJob'

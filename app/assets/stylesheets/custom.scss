@@ -694,6 +694,9 @@ $main-color: #23303D;
     transform: scale(1.002);
   }
 }
+.box_jobs.applied {
+  height: auto !important;
+}
 
 .box_info {
   position: relative;
