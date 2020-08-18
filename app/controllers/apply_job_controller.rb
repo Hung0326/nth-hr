@@ -21,9 +21,7 @@ class ApplyJobController < ApplicationController
     @apply_job.cv = current_user.cv if @apply_job.cv.blank?
     session[:cache_name] = @apply_job.cv.cache_name
     if @apply_job.invalid?
-      errors = []
-      @apply_job.errors.full_messages.each { |mess| errors << "#{mess}<br>" }
-      flash[:error] = errors.join('<br>').html_safe
+      helpers.render_errors(@apply_job)
       redirect_to apply_path(job_id: session[:job_id])
     end
   end
