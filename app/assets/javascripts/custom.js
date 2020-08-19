@@ -42,14 +42,14 @@ $(document).on("turbolinks:load", function(){
   // show & hide password
   $(".icon_show_password").on('click',function() {
     $(".input_password").attr('type', 'text');
-    $(".icon_show_password").css('display', 'none')
-    $(".icon_hide_password").css('display', 'block')
+    $(".icon_show_password").hide()
+    $(".icon_hide_password").show()
   });
 
   $(".icon_hide_password").on('click',function() {
     $(".input_password").attr('type', 'password');
-    $(".icon_hide_password").css('display', 'none')
-    $(".icon_show_password").css('display', 'block')
+    $(".icon_hide_password").hide()
+    $(".icon_show_password").show()
   });
 
 });
