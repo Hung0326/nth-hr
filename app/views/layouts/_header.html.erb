@@ -25,10 +25,24 @@
               link_to t('pages.index.register'), new_user_registration_path, class: 'link_item_menu_header_right' 
           end %>
         </li>
-        <li class="list_item_menu_header_right">
-          <span class="link_item_menu_header_right custom"><%= t('pages.index.language') %></span>&nbsp;
-          <%= link_to image_tag('flagvn.png', class: 'header_img_flag'), locale:'vi' %><span style="color: #999;"> | </span>
-          <%= link_to image_tag('flagusa.png', class: 'header_img_flag'), locale:'en' %>
+        <li class="list_item_menu_header_right have_menu">
+          <%= link_to t('pages.index.language'), '#', class: 'link_item_menu_header_right' %>
+          <div class="menu_hover">
+            <ul>
+              <li>
+                <%= image_tag('flagusa.png', class: 'header_img_flag')%>
+                <%= link_to_if(user_signed_in?, t('pages.index.en'), set_lang_path(lang: 'en'), class: 'link_ct apply_job') do            
+                  link_to t('pages.index.en'), {locale: 'en'}, {class: 'link_ct apply_job'}
+                end %>
+              </li>
+              <li>
+                <%= image_tag('flagvn.png', class: 'header_img_flag')%>
+                <%= link_to_if(user_signed_in?, t('pages.index.vi'), set_lang_path(lang: 'vi'), class: 'link_ct apply_job') do            
+                  link_to t('pages.index.vi'), {locale: 'vi'}, {class: 'link_ct apply_job'}
+                end %>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -58,8 +72,13 @@
               <span class="link_item_menu_mobile custom"><%= t('pages.index.language') %></span>
             </li>
             <li class="item_menu_mobile_vertical">
-              <%= link_to 'Vietnamese', locale:'vi', class: 'link_item_menu_mobile' %><span style="color: #999;"> |</span>
-              <%= link_to 'English', locale:'en', class: 'link_item_menu_mobile' %>
+              <%= link_to_if(user_signed_in?, t('pages.index.en'), set_lang_path(lang: 'en'), class: 'link_item_menu_mobile') do            
+                link_to t('pages.index.en'), {locale: 'en'}, {class: 'link_item_menu_mobile'}
+              end %>
+              <span style="color: #999;"> |</span>
+              <%= link_to_if(user_signed_in?, t('pages.index.vi'), set_lang_path(lang: 'vi'), class: 'link_item_menu_mobile') do            
+                link_to t('pages.index.vi'), {locale: 'vi'}, {class: 'link_item_menu_mobile'}
+              end %>
             </li>
           </ul>
         </div>

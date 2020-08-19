@@ -34,7 +34,7 @@
             <%= f.label :cv, t('pages.mypage.cv') %>
           </div>
           <div class="col-md-9">
-            <%= f.file_field :cv, autofocus: true, class: 'pppp' %>      
+            <%= f.file_field :cv, accept: '.pdf', autofocus: true, class: 'pppp' %>      
             <i style="font-size: 15px; color: #666">Current file: <%= current_user.cv.identifier %></i>
           </div>
         </div><br>

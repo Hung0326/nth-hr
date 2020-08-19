@@ -15,3 +15,8 @@
 //= require turbolinks
 //= require jquery.min
 //= require_tree .
+toastr.options = {
+  'closeButton': true,
+  'progressBar': true,
+  'timeOut': 10000
+}

@@ -25,7 +25,9 @@
             <%= f.label :password, t('devise.pass_word') %>
           </div>
           <div class="col-md-9">
-            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control input_password' %>
+            <span class="icon_show_password"><i class="far fa-eye"></i></span>
+            <span class="icon_hide_password"><i class="far fa-eye-slash"></i></span>
           </div>
         </div><br>
         <div class="row">

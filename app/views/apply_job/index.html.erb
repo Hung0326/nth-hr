@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <hr>
+      <div class="box_text_five_jobs">
+        <span><%= t('apply_job.title') %></span>
+      </div>
+      <hr>
+    </div>
+    <% if @jobs.blank? %>
+    <div class="col-lg-12">
+      <div class="breadcrumb_total_search">
+        <span class="breadcrumb-item active">
+          <%= t('apply_job.no_record') %>
+        </span>
+      </div>
+    </div>
+    <% else %>
+      <%= render partial: 'apply_job/block_info_job', collection: @jobs, as: :data %>
+      <div class="col-lg-12">
+        <div class="breadcrumb_total_search_pagination_jobs">
+          <div class="pagination_jobs">
+            <div id="paginator">
+              <%= paginate @jobs %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

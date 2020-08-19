@@ -24,6 +24,10 @@ en:
       more: 'More'
       btn_text_favorite: 'Favorite'
       salary: ' Salary'
+      vi: 'Vietnamese' 
+      en: 'English'
+      setting: 'Settings'
+      applied_at: 'Applied_at'
     banner:
       slogan: 'VENJOB HUMAN RESOURCE PLATFORM'
       slogan_2: 'Instantly discover the best jobs on VenJob'
@@ -50,6 +54,13 @@ en:
       domestic: 'Viet Nam'
       international: 'International'
       provinces_vn: 'Provinces and cities of Vietnam'
+    apply:
+      ribon_1: 'Enter your information'
+      ribon_2: 'Confirmation'
+      ribon_3: 'Done'
+      title_input_1: 'Fill in your contact information and choose a profile to apply for:'
+      title_input_2: 'Your contact information:'
+      btn_text_confirm: 'Confirm'
     mypage:
       title: 'My page'
       email: 'Email'
@@ -108,3 +119,20 @@ en:
     cancel_my_acc: 'Cancel my account'
     remember_me: 'Remember Me'
     ask_forget_password: 'Forgot your password?'
+  apply_job:
+    success: 'Successful manipulation'
+    error: 'Manipulation failed. Please try again'
+    thanks: 'Thanks you for apply!'
+    backtotop: 'Back to homepage'
+    done: 'Done'
+    subject: 'Thank you for apply with VeNJOB'
+    job: 'Job'
+    confirm: 'Please confirm your information'
+    applied: 'Applied'
+    title: 'List Applied Jobs'
+    no_record: "You haven't applied yet."
+    already_taken: 'We have received your resume, the employer will contact you as soon as possible.'
+  activerecord:
+    attributes:
+      applied_job: 
+        user_id: ''

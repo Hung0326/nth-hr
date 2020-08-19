@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="box_jobs applied">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="box_info">
+                <div class="lol">
+                  <%= link_to data.job.name, detail_job_path(id: data.job.id), class: 'job_name' %>
+                </div>
+                <div class="coc">
+                  <h5 class="box_info_des"><%= strip_tags(data.job.description) %></h5>
+                </div>
+                <div style="margin-top: 8px;">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="loc">
+                        <h5 class="box_info_location"><i class="fas fa-map-marker-alt"></i>
+                          <%= data.job.cities.map(&:name).join(' | ') %>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <h5 class="box_info_salary"><i class="fas fa-dollar-sign"></i>&nbsp;<%= "#{t('pages.index.salary')}: #{data.job.salary}" %></h5>
+                    </div>
+                    <div class="col-lg-5">
+                      <h5 class="box_info_salary"><%= "#{t('pages.index.applied_at')}: #{data.decorate.applied_at}" %></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

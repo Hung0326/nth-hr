@@ -1,0 +1,81 @@
+// Place all the styles related to the apply_job controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the apply_job controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.box_job_apply {
+  font-family: 'Raleway', sans-serif;
+  padding: 20px;
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 1px rgba($color: #999, $alpha: 0.5);
+  margin-top: 30px;
+}
+.span_first {
+  color: rgb(221, 82, 82);
+  font-weight: 600;  
+}
+.span_second {
+  color: #172642;
+  font-weight: 700;
+}
+
+.ribbon_item {
+  position: relative;
+  text-align: center;  
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  color: #666;
+  z-index: 100;
+  margin-bottom: 5px;
+}
+.ribbon_item.active {
+  background-color: #3d82be;  
+  color: #fff;
+  &::before {
+    content: '';
+    z-index: 101;
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-top: 20px solid white;
+    border-bottom: 20px solid white;
+    border-left: 25px solid #3d82be; 
+  }
+  &::after {
+    content: '';
+    z-index: 101;
+    position: absolute;
+    left: 0;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-top: 20px solid #3d82be;
+    border-bottom: 20px solid #3d82be;
+    border-left: 25px solid #fff; 
+  }
+}
+.custom_badges {
+  font-size: 20px !important;
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+  padding: 0px 8px 2px;
+  border-radius: 20%;
+}
+.custom_badges.active {  
+  background-color: white;
+  color: #666;  
+  padding: 0px 8px !important;  
+}
+
+@media only screen and (max-width: 992px) { 
+
+  
+}

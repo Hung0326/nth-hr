@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="box_job_apply">
+    <%= render 'ribbon', attr_active_1: 'active', attr_active_2: 'active', attr_active_3: '' %>
+    <div class="form_apply_job">
+      <span class="span_second"><%= t('apply_job.confirm') %></span>
+      <br><br>
+      <div class="container">
+        <%= form_with(model: @apply_job, url: done_path, local: true) do |f| %>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+              <%= f.label :name, t('pages.mypage.name') %>
+            </div>
+            <div class="col-lg-6">
+              <%= @apply_job.name %>
+              <%= f.hidden_field(:job_id, value: @apply_job.job_id) %>
+              <%= f.hidden_field(:name, value: @apply_job.name) %>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+              <%= f.label :email%>
+            </div>
+            <div class="col-lg-6">
+              <%= @apply_job.email %>
+              <%= f.hidden_field(:email, value: @apply_job.email) %>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+              <span><%= t('pages.mypage.cv') %></span>
+            </div>
+            <div class="col-lg-5 col-md-12">
+              <%= f.file_field :cv, accept: '.pdf, .zip', class: 'pppp hidden' %>  
+              <%= @apply_job.cv.identifier %>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-4">
+              <%= f.submit t('pages.apply.btn_text_confirm'), class:'btn btn-success btn-info-custom' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+      </div>
+      <%= link_to t('devise.back'), :back %>
+    </div>
+  </div>
+</div>

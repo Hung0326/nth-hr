@@ -10,6 +10,7 @@ module ApplicationHelper
   def custom_bootstrap_flash
     flash_messages = []
     flash.each do |type, message|
+      next if message.blank?
       type = 'success' if type == 'notice'
       type = 'error'   if type == 'alert'
       text = "<script>toastr.#{type}('#{message}');</script>"

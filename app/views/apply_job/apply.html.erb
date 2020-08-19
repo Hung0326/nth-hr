@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="box_job_apply">
+  <%= render 'ribbon', attr_active_1: 'active', attr_active_2: '', attr_active_3: '' %>
+    <div class="form_apply_job">
+      <span style="font-size:20px"> <%= t('apply_job.job')%>: </span><span style="font-size: 26px; color: red; font-weight:bold;"><%= @job.name %></span><br><br>
+      <span class="span_second"><%= t('pages.apply.title_input_1') %></span><br>
+      <span><%= t('pages.apply.title_input_2') %></span>
+      <%= render 'form', data_apply: @data_apply  %>
+    </div>
+  </div>
+</div>
+<div style="width: 100%; height: 25vh"></div>

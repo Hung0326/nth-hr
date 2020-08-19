@@ -34,5 +34,29 @@ $(document).on("turbolinks:load", function(){
     console.log('bam')
     body.stop().animate({ scrollTop: $('.title_list_city_qt').offset().top}, 700, 'swing');        
   });
+  // change lable
+  $("input[type=file]").on('change',function(){
+    document.getElementById ("label_name_file").innerHTML = this.files[0].name;
+  });
 
+  // show & hide password
+  $(".icon_show_password").on('click',function() {
+    $(".input_password").attr('type', 'text');
+    $(".icon_show_password").hide()
+    $(".icon_hide_password").show()
+  });
+
+  $(".icon_hide_password").on('click',function() {
+    $(".input_password").attr('type', 'password');
+    $(".icon_hide_password").hide()
+    $(".icon_show_password").show()
+  });
+
+});
+$(document).on("turbolinks:click", function(){
+  $(".box_loading").show();
+});
+
+$(document).on("turbolinks:load", function(){
+  $(".box_loading").hide();
 });

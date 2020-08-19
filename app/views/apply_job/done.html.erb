@@ -1,0 +1,8 @@
+<% provide(:title, "#{t('apply_job.done')}") %>
+<div class="container">
+  <div class="box_job_apply">
+    <%= render 'ribbon', attr_active_1: 'active', attr_active_2: 'active', attr_active_3: 'active' %>
+    <span style="font-size: 22px;"><%= t('apply_job.thanks') %></span><hr>
+    <%= link_to t('apply_job.backtotop'), root_path, class: 'link_ct' %>
+  </div>
+</div>

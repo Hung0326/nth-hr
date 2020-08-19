@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     render :confirm
   end
 
-  def my_page
+  def my_page; end
+
+  def set_lang
+    current_user.update_current_language(params[:lang]) if user_signed_in?
+    redirect_to '/'
   end
 end

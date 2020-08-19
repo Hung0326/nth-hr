@@ -1,3 +1,35 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.input_password {
+  position: relative;
+}
+@mixin icon_password {
+  font-size: 14px;
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  &:hover {
+    cursor: pointer;
+  }
+}
+.icon_show_password {
+  @include icon_password;
+  display: block;
+}
+
+.icon_hide_password {
+  @include icon_password;
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .icon_show_password {
+    right: 6%;
+  }
+  .icon_hide_password {
+    right: 6%;
+  }
+}
