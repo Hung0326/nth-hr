@@ -10,7 +10,7 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <%= link_to t('pages.index.favorite'), '#', class: 'link_item_menu_header_right' %>
+          <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right' %>
         </li>
         <li class="list_item_menu_header_right">
           <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_header_right' %>
@@ -53,7 +53,7 @@
         <div class = "menu_mobile_vertical">
           <ul class = "list_menu_mobile_vertical">
             <li class = "item_menu_mobile_vertical">
-              <%= link_to t('pages.index.favorite'), '#', class: 'link_item_menu_mobile' %>
+              <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_mobile' %>
             </li>
             <li class = "item_menu_mobile_vertical">
               <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_mobile' %>

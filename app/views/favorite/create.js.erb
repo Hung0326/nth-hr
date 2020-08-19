@@ -1,0 +1,3 @@
+$('.block_link_favorite').bind('ajax:success', function() {
+   $(this).html("<%= j render 'job/link_destroy',favorite_id: @favorite.id %>")
+});

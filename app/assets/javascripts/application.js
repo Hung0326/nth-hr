@@ -17,6 +17,5 @@
 //= require_tree .
 toastr.options = {
   'closeButton': true,
-  'progressBar': true,
-  'timeOut': 10000
+  'timeOut': 8000
 }

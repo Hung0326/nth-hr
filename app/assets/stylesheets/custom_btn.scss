@@ -15,11 +15,15 @@
   display: none;
 }
 .link_favorite {
-  color: #999;
+  color:#e62958;
   z-index: 100000;
+  margin-right: 15px;
   &:hover {
     text-decoration: none;
   }
+}
+.link_favorite.active {
+  color: #e62958 !important;
 }
 .block_click_favorite {
   color: #999;
@@ -101,6 +105,10 @@
   font-weight: 600;
   font-family: 'Raleway', sans-serif;
 }
+@media only screen and (max-width: 992px) {
+
+}
+
 @media only screen and (max-width: 768px) {
   .block_link_favorite.lg {
     display: none;
