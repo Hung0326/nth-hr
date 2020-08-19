@@ -15,10 +15,9 @@
         <span>Company: <%= @applied_job.job.company.name %></span><br><br>
         <span>Name: <%= @applied_job.name %></span><br>
         <span>Email: <%= @applied_job.email %></span><br>
-        CV: <%= link_to  @applied_job.cv.identifier, root_url(@applied_job.cv.url) , target: '_blank' %>
+        CV: <%= link_to @applied_job.cv.identifier, root_url(@applied_job.cv.url), target: '_blank' %>
         <p>Best</p>
       </div>
     </div>
   </body>
 </html>
-

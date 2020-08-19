@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppliedJobDecorator < Draper::Decorator
   delegate_all
   def applied_at

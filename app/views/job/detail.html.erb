@@ -24,9 +24,13 @@
     </div>
     <div class="col-lg-3">
       <div class="btn_apply_job">
-        <%= link_to_if(current_user.applied_jobs.find_by(job_id: @job.id).present?, t('apply_job.applied'), '#', class: 'btn btn-apply_job inactive') do            
-          link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job'
-        end %>
+        <% if user_signed_in? %>  
+          <%= link_to_if(current_user.applied_jobs.find_by(job_id: @job.id).present?, t('apply_job.applied'), '#', class: 'btn btn-apply_job inactive') do            
+            link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job'
+            end %>
+        <% else %>
+          <%= link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job' %>
+        <% end %>
       </div>
     </div>
     <div class="col-lg-12 col-md-12">
@@ -82,9 +86,13 @@
   <div class="row">
     <div class="col-lg-6 col-md-6">
       <div class="btn_apply_job">
-        <%= link_to_if(current_user.applied_jobs.find_by(job_id: @job.id), t('apply_job.applied'), '#', class: 'btn btn-apply_job inactive') do            
-          link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job'
-        end %>
+        <% if user_signed_in? %>          
+          <%= link_to_if(current_user.applied_jobs.find_by(job_id: @job.id), t('apply_job.applied'), '#', class: 'btn btn-apply_job inactive') do            
+            link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job'
+            end %>
+        <% else %>
+          <%= link_to t('pages.detail.btr_text_submit_cv'), apply_path(job_id: @job.id), class: 'btn btn-apply_job' %>
+        <% end %>
       </div>
     </div>
     <div class="col-lg-6 col-md-6">

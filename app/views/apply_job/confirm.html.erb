@@ -1,25 +1,6 @@
 <div class="container">
   <div class="box_job_apply">
-    <div class="ribbon">
-      <div class="row">
-        <div class="col-lg-4 col-md-12">
-          <div class="ribbon_item active">
-            <span class="custom_badges active">1</span> <%= t('pages.apply.ribon_1') %>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-12">
-          <div class="ribbon_item active">
-            <span class="custom_badges active">2</span> <%= t('pages.apply.ribon_2') %>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-12">
-          <div class="ribbon_item">
-            <span class="custom_badges">3</span> <%= t('pages.apply.ribon_3') %>
-          </div>
-        </div>
-      </div>
-      <hr>
-    </div>
+    <%= render 'ribbon', attr_active_1: 'active', attr_active_2: 'active', attr_active_3: '' %>
     <div class="form_apply_job">
       <span class="span_second"><%= t('apply_job.confirm') %></span>
       <br><br>

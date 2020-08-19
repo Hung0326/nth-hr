@@ -39,6 +39,19 @@ $(document).on("turbolinks:load", function(){
     document.getElementById ("label_name_file").innerHTML = this.files[0].name;
   });
 
+  // show & hide password
+  $(".icon_show_password").on('click',function() {
+    $(".input_password").attr('type', 'text');
+    $(".icon_show_password").css('display', 'none')
+    $(".icon_hide_password").css('display', 'block')
+  });
+
+  $(".icon_hide_password").on('click',function() {
+    $(".input_password").attr('type', 'password');
+    $(".icon_hide_password").css('display', 'none')
+    $(".icon_show_password").css('display', 'block')
+  });
+
 });
 $(document).on("turbolinks:click", function(){
   $(".box_loading").show();
