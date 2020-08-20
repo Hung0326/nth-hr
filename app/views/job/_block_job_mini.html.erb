@@ -1,1 +1,38 @@
-wrewerwerwetet
+<div class="con">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="box_jobs mini">
+          <div class="row">
+            <div class="d-none d-lg-block col-lg-1">
+              <div class="box_radio">
+              </div>
+            </div>
+            <div class="col-lg-10 col-md-11 col-sm-11">
+              <div class="box_info">
+                <div class="lol">
+                  <%= link_to data.name, detail_job_path(id: data.id), class: 'job_name' %>
+                </div>
+                <div class="cop">
+                  <h5 class="box_info_copany_name"><i class="far fa-building"></i> <%= data.company.name %></h5>
+                </div>
+                <div class="loc">
+                  <h5 class="box_info_location"><i class="fas fa-map-marker-alt"></i>
+                    <%= data.cities.map(&:name).join(' | ') %>
+                  </h5>
+                </div>
+                <h5 class="box_info_salary"><i class="fas fa-dollar-sign"></i>&nbsp;<%= "#{t('pages.index.salary')}: #{data.salary}" %></h5>
+                <div class="coc">
+                  <h5 class="box_info_des"><%= strip_tags(data.description) %></h5>
+                </div>
+              </div>
+            </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, destroy_favorite_path(favorite_id: data.favorites.ids), method: :delete, remote: true, class: 'link_favorite in_block' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

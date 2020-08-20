@@ -11,6 +11,7 @@ vi:
   pages:
     index:
       favorite: 'Yêu thích'
+      unfavorite: 'Không thích nữa'
       history: 'Lịch sử'
       signin: 'Đăng nhập'
       register: 'Đăng ký'
@@ -132,8 +133,14 @@ vi:
     title: 'Danh sách công việc đã ứng tuyển'
     no_record: 'Bạn chưa ứng tuyển công việc nào hết.'
     already_taken: 'Chúng tôi đã tiếp nhận hồ sơ của bạn, nhà tuyển dụng sẽ liên hệ đến bạn trong thời gian sớm nhất.'
+  favorite:
+    liked: 'Bạn đã thêm công việc vào yêu thích.'
+    list: 'Danh sách công việc bạn đã thích'
+    list_blank: 'Bạn chưa có công việc yêu thích!'
   activerecord:
     attributes:
       applied_job: 
+        user_id: ''
+      favorite: 
         user_id: ''
   

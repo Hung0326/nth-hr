@@ -10,7 +10,11 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right' %>
+          <% if user_signed_in? %>
+            <%= link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_header_right number_favorite' %>
+          <% else %> 
+            <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right'  %>
+          <% end %>
         </li>
         <li class="list_item_menu_header_right">
           <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_header_right' %>

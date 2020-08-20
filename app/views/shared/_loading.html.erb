@@ -17,7 +17,7 @@
   .content {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 48%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -38,6 +38,16 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  @media only screen and (max-width: 768px) {
+    .content { 
+      left: 47% !important;
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .content { 
+      left: 44% !important;
+    }
   }
 </style>
 

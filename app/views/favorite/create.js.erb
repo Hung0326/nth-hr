@@ -1,3 +1,17 @@
 $('.block_link_favorite').bind('ajax:success', function() {
-   $(this).html("<%= j render 'job/link_destroy',favorite_id: @favorite.id %>")
+   $(this).html("<%= j render 'job/link_destroy',favorite_id: @favorite.id %>");
+   change_number_of_favorite()
 });
+
+$('.btn_apply_job').bind('ajax:success', function() {
+   change_number_of_favorite()
+   $(this).html("<%= j render 'job/link_destroy_favorite_in_detail',favorite_id: @favorite.id %>")
+});
+
+function change_number_of_favorite() {
+   if (I18n.locale == 'vi') {
+      $('.number_favorite').text('('+<%=current_user.favorites.count%>+')' + ' Yêu thích' );
+   } else if (I18n.locale == 'en') {
+      $('.number_favorite').text('('+<%=current_user.favorites.count%>+')' + ' Favotite' );
+   }
+}

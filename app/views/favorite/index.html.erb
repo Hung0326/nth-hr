@@ -1,2 +1,42 @@
-weklhjdfqwl;edjwjhqgbedklqwheuiqw
-<%= render 'job/block_job_mini' %>
+<div class="container">
+  <div class="box_my_page">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box_my_page_header">
+          <h4><%= t('favorite.list') %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="width: 100%; height: 150px"></div>
+<% if @favorites.blank? %>
+  <div class="col-lg-12">
+    <div class="breadcrumb_total_search">
+      <span class="breadcrumb-item active">
+        <%= t('favorite.list_blank') %>
+      </span>
+    </div>
+  </div>
+  <div style="width: 100%; height: 55vh"></div>
+<% else %>
+<div class="container">
+  <%= form_with url: apply_path, method: :get, local: true do |f| %>
+    <div class="box_scroll">
+      <%= f.collection_radio_buttons :job_id, @favorites, :id, :id do |radio| %>
+          <%= radio.radio_button(class: 'radio_id') %>
+        <%= render 'job/block_job_mini', data: radio.object %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="btn_apply_job">
+          <%= f.submit t('pages.detail.btr_text_submit_cv'), class: 'btn btn-apply_job' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

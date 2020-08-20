@@ -22,6 +22,18 @@
     text-decoration: none;
   }
 }
+.link_favorite.in_block {
+  position: absolute;
+  z-index: revert;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #483ea2d1;
+  &:hover {
+    color: #1135e6;
+  }
+}
+
 .link_favorite.active {
   color: #e62958 !important;
 }
