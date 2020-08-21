@@ -3,6 +3,12 @@
 # Job controller
 class JobController < ApplicationController
   before_action :load_data_dropdown, only: :index
+  # after_action :add_job_to_history, only: :detail
+
+  def add_job_to_history
+    current_user.histories.create(session[:params_job_id]) if user_signed_in?
+    session.delete(:params_job_id)
+  end
 
   def index
     model = params[:model].classify.constantize
@@ -11,6 +17,7 @@ class JobController < ApplicationController
   end
 
   def detail
+    session[:params_job_id] = params[:id]
     @job = Job.find(params[:id]).decorate
     cities = @job.cities.first
     industries = @job.industries.first

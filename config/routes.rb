@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     post 'confirm', to: 'apply_job#confirm', as: :confirm
     post 'done', to: 'apply_job#done', as: :done
     get 'my/jobs', to: 'apply_job#index', as: :list_applied_jobs
+    # Fovorite
+    resources :favorite, only: %i[index create destroy]
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require i18n
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -17,6 +18,5 @@
 //= require_tree .
 toastr.options = {
   'closeButton': true,
-  'progressBar': true,
-  'timeOut': 10000
+  'timeOut': 8000
 }

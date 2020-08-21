@@ -1,6 +1,6 @@
 $(document).on("turbolinks:load", function(){
 
-  $('.block_click_favorite').click(function (e) { 
+  $('.span_click_favorite').click(function (e) { 
     $('.overlay_login').addClass('show');    
   });
 

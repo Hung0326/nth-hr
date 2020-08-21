@@ -10,6 +10,7 @@ class ApplyJobController < ApplicationController
 
   def apply
     return redirect_to root_path if params[:job_id].blank?
+
     @data_apply = current_user.applied_jobs.new(name: current_user.name, email: current_user.email)
     session[:job_id] = params[:job_id]
     @job = Job.find(params[:job_id])

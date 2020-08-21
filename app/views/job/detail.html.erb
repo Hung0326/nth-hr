@@ -97,7 +97,12 @@
     </div>
     <div class="col-lg-6 col-md-6">
       <div class="btn_apply_job">
-        <%= link_to t('pages.index.btn_text_favorite'), '#', class: 'btn btn-apply_job_favorite' %>
+        <% favorite_id = current_user.favorites.find_by(job_id: @job.id).try(:id) if user_signed_in? %>
+        <% if favorite_id.blank?  %>
+          <%= render 'link_create_favorite_in_detail', job_id: @job.id %>
+        <% else %>
+          <%= render 'link_destroy_favorite_in_detail', favorite_id: favorite_id %>
+        <% end %>
       </div>
     </div>
   </div>

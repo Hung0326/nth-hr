@@ -11,6 +11,7 @@ en:
   pages:
     index:
       favorite: 'Favorite'
+      unfavorite: 'Unfavorite'
       history: 'History'
       signin: 'Sign in'
       register: 'Register'
@@ -132,7 +133,13 @@ en:
     title: 'List Applied Jobs'
     no_record: "You haven't applied yet."
     already_taken: 'We have received your resume, the employer will contact you as soon as possible.'
+  favorite:
+    liked: 'You have added job to favorites'
+    list: 'List of jobs you liked'
+    list_blank: 'You do not have a favorite job!'
   activerecord:
     attributes:
       applied_job: 
+        user_id: ''
+      favorite:
         user_id: ''

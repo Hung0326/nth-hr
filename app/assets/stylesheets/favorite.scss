@@ -1,0 +1,67 @@
+// Place all the styles related to the favorite controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.box_scroll{
+  width: 100%;
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.box_radio {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%); 
+}
+.radio_id {
+  position: relative;
+  z-index: 999999999999;
+  // top: 50px;
+}
+[type="radio"] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition: ease-in 0.3s;
+}
+
+[type="radio"]:checked {
+  transition: ease-in 0.3s;
+}
+
+.span_click_favorite {
+  &:hover {
+    cursor: pointer;
+    transform: rotateY(360deg);
+    transition: ease-in-out;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    .btn_apply_job.in_favorite {
+      display: none;
+    }
+  }
+  .link_favorite.in_block {
+    right: 30px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .link_favorite.in_block {
+    right: 15px;
+  }
+}
+@media only screen and (max-width: 576px) { 
+  .link_favorite.in_block {
+    transform: translateY(-250%);
+  }
+  .box_my_page_header {
+    h4 {
+      font-size: 16px;
+    }
+  }
+}

@@ -1175,6 +1175,12 @@ $main-color: #23303D;
     font-weight: 600 !important;
   }
 }
+
+.btn-apply_job_favorite.unfavorite {
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+
 .box_detail_jobs {
   width: 100%;
   height: auto;
@@ -1609,4 +1615,10 @@ $main-color: #23303D;
       }
     }
   }
+}
+.lable_radio {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
 }

@@ -1,0 +1,22 @@
+$('.block_link_favorite').bind('ajax:success', function() {
+   $(this).html("<%= j render 'job/link_create',job_id: @favorite.job_id %>")
+   change_number_of_favorite()
+});
+
+$('.btn_apply_job').bind('ajax:success', function() {
+   $(this).html("<%= j render 'job/link_create_favorite_in_detail',job_id: @favorite.job_id %>")
+   change_number_of_favorite()
+});
+
+$('.con').bind('ajax:success', function() {
+   $(this).fadeOut('fast', 'swing');
+   change_number_of_favorite()
+});
+
+function change_number_of_favorite() {
+   if (I18n.locale == 'vi') {
+      $('.number_favorite').text('('+<%=current_user.favorites.count%>+')' + ' Yêu thích' );
+   } else if (I18n.locale == 'en') {
+      $('.number_favorite').text('('+<%=current_user.favorites.count%>+')' + ' Favotite' );
+   }
+}
