@@ -10,8 +10,8 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <%= link_to_if(!user_signed_in?, t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right number_favorite') do
-            link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_header_right'
+          <%= link_to_if(!user_signed_in?, t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right') do
+            link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_header_right number_favorite'
           end %>
         </li>
         <li class="list_item_menu_header_right">
