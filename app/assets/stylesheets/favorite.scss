@@ -39,10 +39,16 @@
     transition: ease-in-out;
   }
 }
-
+.transform_margin {
+  width: 100%;
+  height: 150px;
+}
 @media only screen and (max-width: 992px) {
   .link_favorite.in_block {
     right: 30px;
+  }
+  .transform_margin {
+    height: 100px;
   }
 }
 @media only screen and (max-width: 768px) {
