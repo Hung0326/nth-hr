@@ -11,7 +11,8 @@
         <div class="col-lg 12">
           <div class="modal_login_notice_text">
             <span><%= t('pages.confirm.modal_login').downcase.capitalize %></span><br>
-            <span><b><%= link_to t('devise.title_signin'), new_user_session_path, class: 'link_ct' %></b></span>
+            <span><b><%= link_to t('devise.title_signin'), new_user_session_path, class: 'link_ct' %></b></span> | 
+            <span><b><%= link_to t('pages.index.register'), new_user_registration_path, class: 'link_ct' %></b></span>
           </div>
         </div>
       </div>

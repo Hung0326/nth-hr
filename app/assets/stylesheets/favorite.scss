@@ -13,14 +13,13 @@
   margin: auto;
   position: relative;
   top: 50%;
-  left: 80%;
+  left: 50%;
   transform: translateY(-50%); 
 }
 .radio_id {
   position: relative;
   z-index: 999999999999;
-  top: 50px;
-  
+  // top: 50px;
 }
 [type="radio"] {
   cursor: pointer;
@@ -33,9 +32,17 @@
   transition: ease-in 0.3s;
 }
 
+.span_click_favorite {
+  &:hover {
+    cursor: pointer;
+    transform: rotateY(360deg);
+    transition: ease-in-out;
+  }
+}
+
 @media only screen and (max-width: 992px) {
   .container {
-    .btn_apply_job {
+    .btn_apply_job.in_favorite {
       display: none;
     }
   }

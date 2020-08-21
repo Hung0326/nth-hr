@@ -20,20 +20,19 @@
   </div>
   <div style="width: 100%; height: 55vh"></div>
 <% else %>
-<div class="container">
-  <%= form_with url: apply_path, method: :get, local: true do |f| %>
+<%= form_with url: apply_path, method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+  <div class="container">
     <div class="box_scroll">
-      <%= f.collection_radio_buttons :job_id, @favorites, :id, :id do |radio| %>
-          <%= radio.radio_button(class: 'radio_id') %>
-        <%= render 'job/block_job_mini', data: radio.object %>
+      <% @favorites.each do |item| %>
+        <%= render 'job/block_job_mini', data: item, form: f %>
       <% end %>
     </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="btn_apply_job">
-          <%= f.submit t('pages.detail.btr_text_submit_cv'), class: 'btn btn-apply_job' %>
+        <div class="btn_apply_job in_favorite">
+          <%= f.submit t('pages.detail.btr_text_submit_cv'), name: nil, class: 'btn btn-apply_job in_favorite' %>
           </div>
         </div>
       </div>

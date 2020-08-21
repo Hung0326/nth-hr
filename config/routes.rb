@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'setting', to: 'users#set_lang', as: :set_lang
   scope '(:locale)', locale: /en|vi/ do
-    devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
+    devise_for :users, controllers: { registrations: 'registrations' }
     root 'home#index'
 
     get 'register/:code', to: 'users#confirm_sign_up', as: :confirm_sign_up

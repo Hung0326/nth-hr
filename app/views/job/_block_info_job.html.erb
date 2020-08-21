@@ -12,7 +12,7 @@
                 <%= render 'job/link_create', job_id: data.id %>
               <% end %>
             <% else %>
-              <%= render 'job/link_create', job_id: data.id %>
+              <span class="link_favorite span_click_favorite"><i class="far fa-heart"></i></span>
             <% end %>
           </div>
         </div>      
@@ -46,7 +46,7 @@
                     <%= render 'job/link_create', job_id: data.id %>
                   <% end %>
                 <% else %>
-                    <%= render 'job/link_create', job_id: data.id %>
+                  <span class="link_favorite span_click_favorite"><i class="far fa-heart"></i></span>
                 <% end %>
               </div>
             </div>

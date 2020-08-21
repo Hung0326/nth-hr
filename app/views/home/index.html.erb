@@ -5,6 +5,7 @@
   <div class="box_text_five_jobs">
     <span><%= t('pages.index.lasted_job') %></span>
   </div>
+  <%= render 'job/modal_login' %>
   <%= render partial: 'job/block_info_job', collection: @lasted_jobs, as: :data %>
   <%= render 'box_nine_city' %>
   <%= render 'box_nine_industries' %>

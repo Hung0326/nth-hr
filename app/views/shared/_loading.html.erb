@@ -15,21 +15,22 @@
     linear-gradient(to bottom, rgba(112, 112, 112, 0.486), rgba(112, 112, 112, 0.486));
   }
   .content {
-    position: absolute;
+    position: relative;
     top: 50%;
-    left: 48%;
-    width: 60px;
-    height: 60px;
+    margin: auto;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
-    border: 4px solid #f3f3f3c0;
+    border: 4px solid #d2d2d2;
     
-    border-left: 4px solid rgb(219, 37, 13);
-    border-right: 4px solid rgb(219, 37, 13);
+    border-left: 4px solid rgb(253, 30, 0);
+    border-right: 4px solid rgb(253, 30, 0);
     
     transform: translateX(-50%) translateY(-50%);
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
+
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -39,18 +40,9 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  @media only screen and (max-width: 768px) {
-    .content { 
-      left: 47% !important;
-    }
-  }
-  @media only screen and (max-width: 576px) {
-    .content { 
-      left: 44% !important;
-    }
-  }
+
 </style>
 
 <div class="box_loading">
-  <div class="content"></div>
+  <div class="small_content content"></div>
 </div>
