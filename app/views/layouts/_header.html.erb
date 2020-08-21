@@ -10,11 +10,9 @@
     <div class="header_top_menu_right">
       <ul class="list_menu_header_right">
         <li class="list_item_menu_header_right">
-          <% if user_signed_in? %>
-            <%= link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_header_right number_favorite' %>
-          <% else %> 
-            <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right'  %>
-          <% end %>
+          <%= link_to_if(!user_signed_in?, t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_header_right number_favorite') do
+            link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_header_right'
+          end %>
         </li>
         <li class="list_item_menu_header_right">
           <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_header_right' %>
@@ -57,7 +55,9 @@
         <div class = "menu_mobile_vertical">
           <ul class = "list_menu_mobile_vertical">
             <li class = "item_menu_mobile_vertical">
-              <%= link_to t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_mobile' %>
+              <%= link_to_if(!user_signed_in?, t('pages.index.favorite'), favorite_index_path, class: 'link_item_menu_mobile') do
+                link_to "(#{current_user.favorites.count}) #{t('pages.index.favorite')}", favorite_index_path, class: 'link_item_menu_mobile number_favorite'
+              end %>
             </li>
             <li class = "item_menu_mobile_vertical">
               <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_mobile' %>

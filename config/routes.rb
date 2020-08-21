@@ -15,9 +15,7 @@ Rails.application.routes.draw do
     post 'done', to: 'apply_job#done', as: :done
     get 'my/jobs', to: 'apply_job#index', as: :list_applied_jobs
     # Fovorite
-    post 'favorite', to: 'favorite#create', as: :favorite
-    delete 'favorite', to: 'favorite#destroy', as: :destroy_favorite
-    get 'favorite', to: 'favorite#index', as: :favorite_index
+    resources :favorite, only: %i[index create destroy]
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

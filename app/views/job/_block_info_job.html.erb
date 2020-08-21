@@ -39,9 +39,9 @@
             <div class="col-sm-2 col-md-3 d-none d-sm-block col-lg-2">
               <div class="link_favorite_top block_link_favorite">
                 <% if user_signed_in? %>
-                  <% @favorite_id = current_user.favorites.find_by(job_id: data.id) %>
+                  <% favorite_id = current_user.favorites.find_by(job_id: data.id) %>
                   <% if favorite_id.present? %>
-                    <%= render 'job/link_destroy', favorite_id: @favorite_id %>
+                    <%= render 'job/link_destroy', favorite_id: favorite_id %>
                   <% else %>
                     <%= render 'job/link_create', job_id: data.id %>
                   <% end %>

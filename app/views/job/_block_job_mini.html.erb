@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, destroy_favorite_path(favorite_id: data.favorites.ids), method: :delete, remote: true, class: 'link_favorite in_block' %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, favorite_path(data.favorites.ids), method: :delete, remote: true, class: 'link_favorite in_block' %>
             </div>
           </div>
         </div>
