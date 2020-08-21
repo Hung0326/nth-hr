@@ -4,12 +4,12 @@
       <div class="col-sm-12">
         <div class="box_jobs mini">
           <div class="row">
-            <div class="d-none d-lg-block col-lg-1">
+            <div class="d-none d-lg-block col-lg-1 d-md-block col-md-1">
               <div class="box_radio">
                 <%= form.radio_button(:job_id, data.id) %>
               </div>
             </div>
-            <div class="col-lg-10 col-md-11 col-sm-11">
+            <div class="col-lg-10 col-md-10 col-sm-11">
               <div class="box_info">
                 <div class="lol">
                   <%= link_to data.name, detail_job_path(id: data.id), class: 'job_name' %>

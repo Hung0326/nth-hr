@@ -41,11 +41,6 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .container {
-    .btn_apply_job.in_favorite {
-      display: none;
-    }
-  }
   .link_favorite.in_block {
     right: 30px;
   }
@@ -53,6 +48,11 @@
 @media only screen and (max-width: 768px) {
   .link_favorite.in_block {
     right: 15px;
+  }
+  .container {
+    .btn_apply_job.in_favorite {
+      display: none;
+    }
   }
 }
 @media only screen and (max-width: 576px) { 
