@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="box_my_page">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box_my_page_header">
+          <h4><%= t('history.list') %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="transform_margin"></div>
+<% if @jobs.blank? %>
+  <div class="col-lg-12">
+    <div class="breadcrumb_total_search">
+      <span class="breadcrumb-item active">
+        <%= t('history.empty') %>
+      </span>
+    </div>
+  </div>
+  <div style="width: 100%; height: 55vh"></div>
+<% else %>
+  <%= form_with url: apply_path, method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+    <div class="container">
+      <div class="box_scroll">
+        <%= render partial: 'histories/block_job_mini', collection: @jobs, as: :data, locals: { form: f } %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="btn_apply_job in_favorite">
+            <%= f.submit t('pages.detail.btr_text_submit_cv'), name: nil, class: 'btn btn-apply_job in_favorite' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -3,13 +3,6 @@
 # Job controller
 class JobController < ApplicationController
   before_action :load_data_dropdown, only: :index
-  # after_action :add_job_to_history, only: :detail
-
-  def add_job_to_history
-    current_user.histories.create(session[:params_job_id]) if user_signed_in?
-    session.delete(:params_job_id)
-  end
-
   def index
     model = params[:model].classify.constantize
     obj = model.find_by(slug: params[:slug])
@@ -17,8 +10,10 @@ class JobController < ApplicationController
   end
 
   def detail
-    session[:params_job_id] = params[:id]
     @job = Job.find(params[:id]).decorate
+    return render 'error/fage_not_found' if @job.blank?
+
+    JobHistory.add_job_to_history(@job.id, current_user) if user_signed_in?
     cities = @job.cities.first
     industries = @job.industries.first
     add_breadcrumb t('controller.job.detail.home'), root_path
@@ -35,6 +30,8 @@ class JobController < ApplicationController
   def render_result(obj)
     @keyword = obj.name
     @data = obj.jobs.page(params[:page])
+    return render 'error/page_not_found' if @data.blank?
+
     render 'result_data'
   end
 end
