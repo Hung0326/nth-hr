@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class JobBusiness
+class JobHistory
   def self.add_job_to_history(job_id, current_user)
     current_user.histories.find_or_create_by(job_id: job_id)
     counter_history = current_user.histories.count

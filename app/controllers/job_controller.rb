@@ -13,7 +13,7 @@ class JobController < ApplicationController
     @job = Job.find(params[:id]).decorate
     return render 'error/fage_not_found' if @job.blank?
 
-    JobBusiness.add_job_to_history(@job.id, current_user) if user_signed_in?
+    JobHistory.add_job_to_history(@job.id, current_user) if user_signed_in?
     cities = @job.cities.first
     industries = @job.industries.first
     add_breadcrumb t('controller.job.detail.home'), root_path
