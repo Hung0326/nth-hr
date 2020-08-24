@@ -137,6 +137,10 @@ en:
     liked: 'You have added job to favorites'
     list: 'List of jobs you liked'
     list_blank: 'You do not have a favorite job!'
+  history:
+    list: 'Histories'
+    list_blank: 'You do not have a histories'
+    see: 'See: '
   activerecord:
     attributes:
       applied_job: 

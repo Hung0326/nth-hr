@@ -6,6 +6,7 @@ class ApplyJobController < ApplicationController
 
   def index
     @jobs = current_user.applied_jobs.includes(:job).order(created_at: :desc).page(params[:page]).per(6)
+    return render 'error/page_not_found' if @jobs.blank?
   end
 
   def apply

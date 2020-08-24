@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get 'my/jobs', to: 'apply_job#index', as: :list_applied_jobs
     # Fovorite
     resources :favorite, only: %i[index create destroy]
+    # History
+    get 'history', to:'histories#index', as: :list_histories
     # Details job
     get 'detail/:id', to: 'job#detail', as: :detail_job
     # Search

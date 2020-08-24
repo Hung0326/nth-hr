@@ -15,7 +15,7 @@
           end %>
         </li>
         <li class="list_item_menu_header_right">
-          <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_header_right' %>
+          <%= link_to t('pages.index.history'), list_histories_path, class: 'link_item_menu_header_right' %>
         </li>
         <li class="list_item_menu_header_right">
           <%= link_to_if(user_signed_in?, t('pages.index.mypage'), my_page_path, class: 'link_item_menu_header_right') do            
@@ -60,7 +60,7 @@
               end %>
             </li>
             <li class = "item_menu_mobile_vertical">
-              <%= link_to t('pages.index.history'), '#', class: 'link_item_menu_mobile' %>
+              <%= link_to t('pages.index.history'), list_histories_path, class: 'link_item_menu_mobile' %>
             </li>
             <li class="item_menu_mobile_vertical">
               <%= link_to_if(user_signed_in?, t('pages.index.mypage'), my_page_path, class: 'link_item_menu_mobile') do            

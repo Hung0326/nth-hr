@@ -137,6 +137,10 @@ vi:
     liked: 'Bạn đã thêm công việc vào yêu thích.'
     list: 'Danh sách công việc bạn đã thích'
     list_blank: 'Bạn chưa có công việc yêu thích!'
+  history:
+    list: 'Lịch sử'
+    list_blank: 'Bạn chưa có xem công việc nào luôn á!'
+    see: 'Đã xem lúc: '
   activerecord:
     attributes:
       applied_job: 
