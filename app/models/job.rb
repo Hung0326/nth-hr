@@ -3,6 +3,7 @@
 # Description/Explanation of Person class
 class Job < ApplicationRecord
   NUMBER_LASTED_JOB = 5
+  NUMBER_RECORD_IN_PAGE = 10
   belongs_to :company
 
   has_many :industry_jobs

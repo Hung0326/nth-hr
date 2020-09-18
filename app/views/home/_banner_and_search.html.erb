@@ -12,7 +12,6 @@
       </div>
     </div>
   </div>
-
   <!-- Process search pc-->
   <div class="box-search">
     <div class="search_scaffold">
@@ -23,29 +22,30 @@
           <h4 class="show_total_job"><%= t('pages.banner.slogan_3', job_count: @job_count) %></h4>
         <% end %>
       </div>
-      <div class="filter_box">
-        <div class="search_input">
-          <input type="search" name="" id="" class="custom_input_search" placeholder="<%= t('pages.banner.search_placeholder') %>">
-        </div>
-        <div class="search_industries">
-          <div class="icon_list">
-            <i class="fa fa-list-ul" aria-hidden="true"></i>
+      <%= form_with url: search_path, method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+        <div class="filter_box">
+          <div class="search_input">
+            <%= f.search_field :keyword, value: @keyword, class: 'custom_input_search', placeholder: t('pages.banner.search_placeholder') %>
           </div>
-          <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), prompt: t('pages.banner.all_industries'), class: 'show_list_industries' %>
-        </div>
-        <div class="search_location">
-          <div class="icon_list">
-            <i class="fas fa-map-marker-alt"></i>
+          <div class="search_industries">
+            <div class="icon_list">
+              <i class="fa fa-list-ul" aria-hidden="true"></i>
+            </div>
+            <% selected = @industry.blank? ? '*' : @industry.id %>
+            <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name', selected), prompt: t('pages.banner.all_industries'), class: 'show_list_industries' %>
           </div>
-          <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name'), prompt: t('pages.banner.all_locations'), class: 'show_list_cities' %>
+          <div class="search_location">
+            <div class="icon_list">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <% selected = @city.blank? ? '*' : @city.id %>
+            <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', selected), prompt: t('pages.banner.all_locations'), class: 'show_list_cities' %>
+          </div>
+          <div class="search_submit">
+            <%= f.submit t('pages.banner.btn_text_search'), name: nil, class: 'btn_search_submit'%>
+          </div>
         </div>
-        <div class="search_submit">
-          <button type="submit" class="btn_search_submit">
-            <i class="fas fa-search"></i>
-            <%= t('pages.banner.btn_text_search') %>
-          </button>
-        </div>
-      </div>
+    <% end %>
     </div>
   </div>
   <!-- Process search tablet-->
@@ -54,29 +54,30 @@
       <div class = "total_job">
         <h4 class="show_total_job"><%= t('pages.banner.slogan_3', job_count: @job_count) %> </h4>
       </div>
-      <div class="filter_box filter_box_tablet">
-        <div class="search_input">
-          <input type="search" name="" id="" class="custom_input_search" placeholder="<%= t('pages.banner.search_placeholder') %>">
-        </div>
-        <div class="search_industries">
+      <%= form_with url: search_path, method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+        <div class="filter_box filter_box_tablet">
+          <div class="search_input">
+            <%= f.search_field :keyword, value: @keyword, class: 'custom_input_search', placeholder: t('pages.banner.search_placeholder') %>
+          </div>
+          <div class="search_industries">
             <div class="icon_list">
               <i class="fa fa-list-ul" aria-hidden="true"></i>
             </div>
-            <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), prompt: t('pages.banner.all_industries'), class: 'show_list_industries' %>
-        </div>
-        <div class="search_location">
-          <div class="icon_list">
-            <i class="fas fa-map-marker-alt"></i>
+            <% selected = @industry.blank? ? '*' : @industry.id %>
+            <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name', selected), prompt: t('pages.banner.all_industries'), class: 'show_list_industries' %>
           </div>
-          <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name'), prompt: t('pages.banner.all_locations'), class: 'show_list_cities' %>
+          <div class="search_location">
+            <div class="icon_list">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <% selected = @city.blank? ? '*' : @city.id %>
+            <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', selected), prompt: t('pages.banner.all_locations'), class: 'show_list_cities' %>
+          </div>
+          <div class="search_submit">
+            <%= f.submit t('pages.banner.btn_text_search'), name: nil, class: 'btn_search_submit'%>
+          </div>
         </div>
-        <div class="search_submit">
-          <button type="submit" class="btn_search_submit">
-            <i class="fas fa-search"></i>
-            <%= t('pages.banner.btn_text_search') %>
-          </button>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
   <div class="box-show-total-jobs-mobile">
@@ -84,34 +85,35 @@
   </div>
   <!-- Process search mobile-->
   <div class="box-search-mobile">
-    <div class="fillter-search-mobile">
+    <%= form_with url: search_path, method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+      <div class="fillter-search-mobile">
+        <div class="container">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <%= f.search_field :keyword, value: @keyword, class: 'custom_input_mobile_search', placeholder: t('pages.banner.search_placeholder') %>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="search_industries_mobile">
+                <% selected = @industry.blank? ? '*' : @industry.id %>
+                <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name', selected), prompt: t('pages.banner.all_industries'), class: 'show_list_industries_mobile' %> 
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="search_location_mobile">
+                <% selected = @city.blank? ? '*' : @city.id %>
+                <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name', selected), prompt: t('pages.banner.all_locations'), class: 'show_list_cities_mobile' %> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="row no-gutters">
-          <div class="col-md-12">
-            <input type="search" name="" id="" class="custom_input_mobile_search" placeholder="<%= t('pages.banner.search_placeholder') %>">
-          </div>
-          <div class="col-sm-6 col-xs-12">
-            <div class="search_industries_mobile">
-              <%= select_tag 'industry', options_from_collection_for_select(@industries, 'id', 'name'), prompt: t('pages.banner.all_industries'), class: 'show_list_industries_mobile' %> 
-            </div>
-          </div>
-          <div class="col-sm-6 col-xs-12">
-            <div class="search_location_mobile">
-              <%= select_tag 'city', options_from_collection_for_select(@cities, 'id', 'name'), prompt: t('pages.banner.all_locations'), class: 'show_list_cities_mobile' %> 
-            </div>
+          <div class="col-sm-12">
+            <%= f.submit t('pages.banner.btn_text_search'), name: nil, class: 'btn_search_submit'%>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-sm-12">
-          <button type="submit" class="btn_search_submit">
-            <i class="fas fa-search"></i>
-            <%= t('pages.banner.btn_text_search') %>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>

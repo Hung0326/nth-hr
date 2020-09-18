@@ -33,15 +33,16 @@ vi:
       slogan: 'NỀN TẢNG TUYỂN DỤNG NHÂN SỰ VENJOB'
       slogan_2: 'Khám phá ngay những việc làm tốt nhất trên VenJob'
       slogan_3: "Khám phá ngay %{job_count} việc làm tốt nhất trên VenJob"
-      search_placeholder: 'Nhập tiêu đề, công ty, địa điểm...'
+      search_placeholder: 'Nhập tiêu đề, công ty,...'
       btn_text_search: 'Tìm việc'
       all_industries: 'Tất cả nghành nghề'
       all_locations: 'Tất cả đỉa điểm'
     confirm:
       modal_login: 'VUI LÒNG ĐĂNG NHẬP ĐỂ THỰC HIỆN CHỨC NĂNG NÀY'
     result:
-      result_find: 'Có <b>%{job}</b> kết quả phù hợp với từ khóa <b>%{key}</b>'
-      no_result_find: 'Không có kết quả phù hợp với từ khóa <b>%{key}</b>'
+      result_find: 'Có &nbsp;<b>%{job}</b>&nbsp; kết quả phù hợp với từ khóa &nbsp;<b>%{key}</b>&nbsp;'
+      no_result_find: 'Không có kết quả phù hợp với từ khóa &nbsp;<b>%{key}</b>&nbsp;'
+      all: 'Tất cả công việc hiện tại'
     detail:
       br_title: 'Kết quả tìm kiếm'
       btr_text_submit_cv: 'Nộp CV ngay'
@@ -50,6 +51,7 @@ vi:
       expiration_date: ' Ngày hết hạn'
       experience: ' Kinh nghiệm'
       level: ' Cấp bậc'
+      industry: ' Ngành nghề:'
     cities:
       ask: 'Bạn muốn tìm việc trong hay ngoài nước?'
       domestic: 'Việt Nam'
@@ -147,4 +149,8 @@ vi:
         user_id: ''
       favorite: 
         user_id: ''
+  views:
+    pagination:
+      last: 'Cuối'
+      first: 'Đầu'
   

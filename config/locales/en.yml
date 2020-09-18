@@ -33,15 +33,16 @@ en:
       slogan: 'VENJOB HUMAN RESOURCE PLATFORM'
       slogan_2: 'Instantly discover the best jobs on VenJob'
       slogan_3: 'Instantly discover %{job_count} the best jobs on VenJob'
-      search_placeholder: 'Input title, companies, locations...'
+      search_placeholder: 'Input title, companies,...'
       btn_text_search: 'Find Job'
       all_industries: 'All industries'
       all_locations: 'All locations'
     confirm:
       modal_login: 'PLEASE SIGN IN TO EXECUTE THIS FUNCTION'
     result:
-      result_find: 'There are <b>%{job}</b> results matching keyword <b>%{key}</b>'
-      no_result_find: 'No results match the keyword <b>%{key}</b>'
+      result_find: 'There are &nbsp;<b>%{job}</b>&nbsp; results matching keyword &nbsp;<b>%{key}</b>&nbsp;'
+      no_result_find: 'No results match the keyword &nbsp;<b>%{key}</b>&nbsp;'
+      all: 'All Job'
     detail:
       br_title: 'Result'
       btr_text_submit_cv: 'Apply Now'
@@ -50,6 +51,7 @@ en:
       expiration_date: ' Expiration date'
       experience: ' Experience'
       level: ' Level'
+      industry: ' Industry:'
     cities:
       ask: 'Do you want to find a job at Viet Nam or oversea?'
       domestic: 'Viet Nam'
@@ -147,3 +149,7 @@ en:
         user_id: ''
       favorite:
         user_id: ''
+  views:
+    pagination:
+      last: 'Last'
+      first: 'First'

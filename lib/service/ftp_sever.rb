@@ -12,7 +12,7 @@ class FtpSever
   NAME_CSV = 'jobs.zip'
 
   def data_csv
-    download_csv
+    # download_csv
     CSV.parse(File.read(Rails.root.join('lib', 'csv', 'jobs.csv')), headers: true)
   end
 

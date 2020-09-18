@@ -1,0 +1,48 @@
+<% provide(:title ,"#{t('pages.detail.br_title')}") %>
+<%= render 'home/banner_and_search' %>  
+<div class="padding_index"></div>
+<div class="container">
+  <div class="row">    
+    <div class="col-lg-12">
+      <div class="breadcrumb_total_search">
+        <span class="breadcrumb-item active">
+          <% if @results.total_count == Job.count %>
+            <div style="word-wrap: break-word;">
+              <%= "#{t('pages.result.all')} #{@results.total_count}" %>
+            </div>
+          <% elsif @results.total_count > 0 %>
+            <%= t('pages.result.result_find', job: @results.total_count, key: @keyword).html_safe %>
+          <% else %>
+            <%= t('pages.result.no_result_find', key: @keyword).html_safe %>
+            <% end %>
+          <b><%= "#{@industry.try(:name)} #{@city.try(:name)}" %></b>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="breadcrumb_total_search_pagination_jobs">
+        <div class="pagination_jobs">
+          <div id="paginator">
+            <%= paginate @results %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'job/modal_login' %>
+<%= render partial: 'block_info_job', collection: @results, as: :data %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">      
+      <div class="breadcrumb_total_search_pagination_jobs">
+        <div class="pagination_jobs">
+          <div class="paginator">
+            <%= paginate @results %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/scroll_top' %>

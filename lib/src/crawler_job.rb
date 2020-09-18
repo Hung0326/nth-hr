@@ -56,6 +56,7 @@ class CrawlerJob < Crawler
                     description: data[:description])
     create_industry_relation(data[:industry_name], job)
     create_city_relation(data[:city_name], job)
+    IndexData.indexed(job)
   rescue StandardError => e
     logger.error "Crawler data jobs has error: #{e}"
   end

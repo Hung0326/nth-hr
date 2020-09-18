@@ -14,6 +14,7 @@ module Venjob
     config.autoload_paths << Rails.root.join('lib/service')
     config.autoload_paths << Rails.root.join('lib/src')
     config.eager_load_paths << Rails.root.join('lib/business')
+    config.eager_load_paths << Rails.root.join('lib/solr')
     # i18n
     config.i18n.available_locales = [:en, :vi]
     config.i18n.default_locale = :vi

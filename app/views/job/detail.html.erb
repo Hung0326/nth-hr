@@ -41,6 +41,12 @@
             <%= link_to "&nbsp;#{x.name}&nbsp;".html_safe, jobs_path(model: 'city', slug: x.slug), class: 'link_ct apply_job link_optimize'%>
           <% end %>        
         </div>
+        <div class="box_detail_jobs_location">
+          <span><i class="fas fa-map-marker-alt"></i><%= t('pages.detail.industry') %></span>
+          <% @job.industries.each do |x| %>
+            <%= link_to "&nbsp;#{x.name}&nbsp;".html_safe, jobs_path(model: 'industry', slug: x.slug), class: 'link_ct apply_job link_optimize'%>
+          <% end %>        
+        </div>
         <div class="box_detail_jobs_salary">
           <br>
           <div class="row">
